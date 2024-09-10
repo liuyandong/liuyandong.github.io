@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Java编程四部曲 - 目录</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Java编程四部曲</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Java编程</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./content.html">点击查看完整目录</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Java编程四部曲</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pay.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">付款方式与学伴社区</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">发布日期</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">四部曲之一: Java基础</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">点击查看完整目录</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">你为什么读不完一本书？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">这本书适合谁？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./thanks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">推荐与感谢</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第1章 初始Java</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第2章 Hello World</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第3章 面向对象编程</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第4章 变量</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">四部曲之二：Java Game</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./game-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">点击查看完整目录</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#第1章-初识java" id="toc-第1章-初识java" class="nav-link active" data-scroll-target="#第1章-初识java"><span class="header-section-number">1</span> 第1章 初识Java</a></li>
+  <li><a href="#第2章-第一行代码" id="toc-第2章-第一行代码" class="nav-link" data-scroll-target="#第2章-第一行代码"><span class="header-section-number">2</span> 第2章 第一行代码</a></li>
+  <li><a href="#第3章-面向对象编程" id="toc-第3章-面向对象编程" class="nav-link" data-scroll-target="#第3章-面向对象编程"><span class="header-section-number">3</span> 第3章 面向对象编程</a></li>
+  <li><a href="#第4章-变量" id="toc-第4章-变量" class="nav-link" data-scroll-target="#第4章-变量"><span class="header-section-number">4</span> 第4章 变量</a></li>
+  <li><a href="#第5章-操作符" id="toc-第5章-操作符" class="nav-link" data-scroll-target="#第5章-操作符"><span class="header-section-number">5</span> 第5章 操作符</a></li>
+  <li><a href="#第6章-结构化编程" id="toc-第6章-结构化编程" class="nav-link" data-scroll-target="#第6章-结构化编程"><span class="header-section-number">6</span> 第6章 结构化编程</a></li>
+  <li><a href="#第7章-方法" id="toc-第7章-方法" class="nav-link" data-scroll-target="#第7章-方法"><span class="header-section-number">7</span> 第7章 方法</a></li>
+  <li><a href="#第8章-数组" id="toc-第8章-数组" class="nav-link" data-scroll-target="#第8章-数组"><span class="header-section-number">8</span> 第8章 数组</a></li>
+  <li><a href="#第9章-类对象与封装" id="toc-第9章-类对象与封装" class="nav-link" data-scroll-target="#第9章-类对象与封装"><span class="header-section-number">9</span> 第9章 类、对象与封装</a></li>
+  <li><a href="#第10章-包" id="toc-第10章-包" class="nav-link" data-scroll-target="#第10章-包"><span class="header-section-number">10</span> 第10章 包</a></li>
+  <li><a href="#第11章-继承" id="toc-第11章-继承" class="nav-link" data-scroll-target="#第11章-继承"><span class="header-section-number">11</span> 第11章 继承</a></li>
+  <li><a href="#第12章-抽象类" id="toc-第12章-抽象类" class="nav-link" data-scroll-target="#第12章-抽象类"><span class="header-section-number">12</span> 第12章 抽象类</a></li>
+  <li><a href="#第13章-接口" id="toc-第13章-接口" class="nav-link" data-scroll-target="#第13章-接口"><span class="header-section-number">13</span> 第13章 接口</a></li>
+  <li><a href="#第14章-多态" id="toc-第14章-多态" class="nav-link" data-scroll-target="#第14章-多态"><span class="header-section-number">14</span> 第14章 多态</a></li>
+  <li><a href="#第15章-集合" id="toc-第15章-集合" class="nav-link" data-scroll-target="#第15章-集合"><span class="header-section-number">15</span> 第15章 集合</a></li>
+  <li><a href="#第16章-异常处理" id="toc-第16章-异常处理" class="nav-link" data-scroll-target="#第16章-异常处理"><span class="header-section-number">16</span> 第16章 异常处理</a></li>
+  <li><a href="#第17章-函数式编程" id="toc-第17章-函数式编程" class="nav-link" data-scroll-target="#第17章-函数式编程"><span class="header-section-number">17</span> 第17章 函数式编程</a></li>
+  <li><a href="#第18章-函数式编程" id="toc-第18章-函数式编程" class="nav-link" data-scroll-target="#第18章-函数式编程"><span class="header-section-number">18</span> 第18章 函数式编程</a></li>
+  <li><a href="#第19章-枚举类型" id="toc-第19章-枚举类型" class="nav-link" data-scroll-target="#第19章-枚举类型"><span class="header-section-number">19</span> 第19章 枚举类型</a></li>
+  <li><a href="#第20章-注解" id="toc-第20章-注解" class="nav-link" data-scroll-target="#第20章-注解"><span class="header-section-number">20</span> 第20章 注解</a></li>
+  <li><a href="#第21章-反射" id="toc-第21章-反射" class="nav-link" data-scroll-target="#第21章-反射"><span class="header-section-number">21</span> 第21章 反射</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">目录</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!--# 以下是第1章的目录 -->
+<section id="第1章-初识java" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 第1章 初识Java</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>本章介绍了Java的历史，不是说“历史是一面镜子”么？</p>
+</div>
+</div>
+<p><strong>1.1 JAVA简介</strong></p>
+<pre><code>1.1.1 Java初次登场 
+1.1.2 指导Java发展的两份文档 
+1.1.3 Java面对的问题以及解决方案</code></pre>
+<p><strong>1.2 JAVA语言进化史</strong></p>
+<p><strong>1.3 小朋友，你是不是有很多问号？</strong></p>
+<pre><code>1.3.1 为什么James Gosling被称为终身仁慈独裁者？ 
+1.3.2 Java的名字是谁起的？ 
+1.3.3 James Gosling如何回答相比于C语言，Java不够自由？ 
+1.3.4 Java的现状怎么样？</code></pre>
+<p><strong>1.4 程序员故事</strong></p>
+</div>
+</div>
+</div>
+<!--# 以下是第2章的目录 -->
+</section>
+<section id="第2章-第一行代码" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 第2章 第一行代码</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>这一章的内容主要是把开发环境配置起来，运行第一个程序，在屏幕上输出两个单词：Hello World。</p>
+</div>
+</div>
+<p><strong>2.1 “传统”JAVA版的Hello World</strong></p>
+<pre><code>2.1.1 用什么工具来输入代码？
+2.1.2 输入的时候需要注意什么？
+2.1.3 如何让源代码跑起来？
+2.1.4 碰到bug怎么办？</code></pre>
+<p><strong>2.2 八仙过海的Java虚拟机</strong></p>
+<pre><code>2.2.1 Sun的虚拟机
+2.2.2 BEA的JRockit
+2.2.3 微软的JVM
+2.2.4 Apache的Harmony
+2.2.5 Google的Dalvik
+2.2.6 我的感慨</code></pre>
+<p><strong>2.3 “脱口秀”之表扬与自我表扬</strong></p>
+<p><strong>2.4 小朋友，你是不是有很多问号？</strong></p>
+<pre><code>2.4.1 bytecode是什么？
+2.4.2 javac是编译器么？
+2.4.3 Java虚拟机只能运行Java语言么？</code></pre>
+<p><strong>2.5 “未来版”的Hello World</strong></p>
+<p><strong>2.5 《万物皆零一》</strong></p>
+</div>
+</div>
+</div>
+<!--# 以下是第3章的目录 -->
+</section>
+<section id="第3章-面向对象编程" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 第3章 面向对象编程</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>这一章讲了面向对象编程的历史，并考证了面向对象编程这几大知识点的由来以及用途。</p>
+</div>
+</div>
+<p><strong>3.1 第一门面向对象编程语言——Simula</strong></p>
+<pre><code>3.1 面向对象发明者的故事
+3.2 Simula的研究成果
+3.3 推广Simula</code></pre>
+<p><strong>3.2 Java中的一切皆对象</strong></p>
+<pre><code>3.2.1 什么是对象
+3.2.2 对象怎么工作</code></pre>
+<p><strong>3.3 面向对象为什么这么难？</strong></p>
+<pre><code>3.3.1 名词搅拌器
+3.3.2 滥用隐喻
+3.3.3 过度宣传</code></pre>
+<p><strong>3.4 面向对象可以很简单</strong></p>
+<pre><code>3.4.1 FIFA足球游戏
+3.4.2 对球员进行抽象
+3.4.3 继承</code></pre>
+<p><strong>3.5 虚构的访谈</strong></p>
+<p><strong>3.6 《万物皆零一》</strong></p>
+</div>
+</div>
+</div>
+<!--# 以下是第4章目录 -->
+</section>
+<section id="第4章-变量" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 第4章 变量</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>变量是构建程序最基本的单位，本章从变量的历史讲起，涵盖了变量命名、变量类型、变量作用域等内容。</p>
+</div>
+</div>
+</div>
+<p><strong>4.1 变量的历史</strong></p>
+<p><strong>4.2 变量的命名</strong></p>
+<p><strong>4.3 变量的数据类型</strong></p>
+<pre><code>4.3.1 基本数据类型
+    4.3.1.1 整数类型
+    4.3.1.2 浮点数类型
+      《考据癖：计算机处理小数的历史》
+    4.3.1.3 字符类型
+      《考据癖：计算机处理字符的历史》
+    4.3.1.4 布尔类型
+    4.3.1.5 类型转换
+4.3.2 引用数据类型</code></pre>
+<p><strong>4.4 变量的作用域</strong></p>
+<pre><code>4.4.1 Java变量的作用域
+4.4.2 作用域的历史
+4.4.3 虚构的故事：动态作用域与静态作用域</code></pre>
+</div>
+</div>
+</div>
+<!--# 以下是第5章目录 -->
+</section>
+<section id="第5章-操作符" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 第5章 操作符</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>小学时候就学了算数操作符与赋值操作符，可能逻辑操作符有一点难度，至于自增、自减那些，一语也就点破了，总之，本章实在是没难度。</p>
+</div>
+</div>
+</div>
+<p><strong>5.1 算数操作符</strong></p>
+<p><strong>5.2 赋值操作符</strong></p>
+<p><strong>5.3 关系操作符</strong></p>
+<p><strong>5.4 逻辑操作符</strong></p>
+<pre><code>5.4.1 逻辑与（AND）
+5.4.2 逻辑或（OR）
+5.4.3 逻辑非（NOT）</code></pre>
+<p><strong>5.5 自增、自减操作符</strong></p>
+<p><strong>5.6 位操作符</strong></p>
+<p><strong>5.7 三元操作符</strong></p>
+<p><strong>5.8 操作符的优先级</strong></p>
+</div>
+</div>
+</div>
+<!--# 以下是第6章的内容 -->
+</section>
+<section id="第6章-结构化编程" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 第6章 结构化编程</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>人类开发软件之后，遇到了第一次软件危机，经过众多科学家的折腾，终于捯饬出来了结构化编程……简单来说，<u><strong>所有的编程都可以用顺序、选择与循环来搞定</strong></u>，我给出了他们当初的论文来证明这一点。这一章算是非常重要的。</p>
+</div>
+</div>
+</div>
+<p><strong>6.1 结构化编程的由来</strong></p>
+<p><strong>6.2 顺序结构</strong></p>
+<pre><code>6.2.1 前后顺序无关的代码
+6.2.2 有明确顺序的代码</code></pre>
+<p><strong>6.3 选择结构</strong></p>
+<pre><code>6.3.1 if语句
+6.3.2 switch语句</code></pre>
+<p><strong>6.4 循环结构</strong></p>
+<pre><code>6.4.1 do-while循环
+6.4.2 while循环
+6.4.3 for循环
+6.4.4 增强的for循环
+6.4.5 break与continue
+6.4.6 标签</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第7章-方法" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 第7章 方法</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>英国科学家大卫·惠勒（David Wheeler）发明了方法，从此所有的编程语言都开始支持方法。可以说，没有方法，无法进行编程。同时，递归是一种比较特殊的方法，如果运用恰当，可以大大简化编程。</p>
+</div>
+</div>
+</div>
+<p><strong>7.1 方法的概述</strong></p>
+<p><strong>7.2 方法的声明与调用</strong></p>
+<p><strong>7.3 方法的参数</strong></p>
+<pre><code>7.3.1 命名参数
+7.3.2 可变参数
+7.3.3 形参与实参</code></pre>
+<p><strong>7.4 方法的返回值</strong></p>
+<p><strong>7.5 递归</strong></p>
+<pre><code>7.5.1 递归步骤与终止条件
+7.5.2 递归实现科赫雪花</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第8章-数组" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 第8章 数组</h1>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>数组是一种古老的数据结构，太过于“原始”，我觉得应该使用更先进的ArrayList等数据结构。但是，数组仍有大量的人在使用，所以，我们也要学习。</p>
+</div>
+</div>
+</div>
+<p><strong>8.1 数组概述</strong></p>
+<p><strong>8.2 数组的声明</strong></p>
+<p><strong>8.3 数组的初始化</strong></p>
+<pre><code>8.3.1 静态初始化
+8.3.2 动态初始化</code></pre>
+<p><strong>8.4 多维数组</strong></p>
+<pre><code>8.4.1 二维数组
+8.4.2 三维数组</code></pre>
+<p><strong>8.5 用数组实现本福特定律</strong></p>
+</div>
+</div>
+</section>
+<section id="第9章-类对象与封装" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 第9章 类、对象与封装</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>如何把功能相关的代码组织到一起呢？答案是用“类”。</p>
+</div>
+</div>
+</div>
+<p><strong>9.1 类、对象与封装</strong></p>
+<p><strong>9.2 属性与方法</strong></p>
+<pre><code>9.2.1 访问修饰符
+9.2.2 getter和setter方法
+9.2.3 构造函数
+9.2.4 如何使用this关键字？</code></pre>
+<p><strong>9.3 静态成员</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="第10章-包" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> 第10章 包</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>如何把功能相关的类组织到一起呢？答案是用“包”。</p>
+</div>
+</div>
+</div>
+<p><strong>10.1 包的简介</strong></p>
+<p><strong>10.2 包的语法与用法</strong></p>
+<pre><code>10.2.1 如何声明包
+10.2.2 如何导入包
+10.2.3 如何使用包中的成员</code></pre>
+<p><strong>10.3 使用包的最佳实践</strong></p>
+<pre><code>10.3.1 如何命名包？
+10.3.2 如何以包为结构组织项目代码</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第11章-继承" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> 第11章 继承</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>权力可以继承，财富可以继承，代码就不可以继承么？当然能！</p>
+<p>继承最重要的功能是为了代码重用，减少代码的重复。官/富二代最重要的功能也是继承富一代的权与钱，减少从零奋斗的过程。</p>
+</div>
+</div>
+</div>
+<p><strong>11.1 什么是继承</strong></p>
+<p><strong>11.2 类实例的继承机制</strong></p>
+<pre><code>11.2.1 子类可以继承父类的属性么？
+11.2.2 子类可以继承父类的方法么？
+10.2.3 如何使用super关键字？</code></pre>
+<p><strong>11.3 静态成员的继承机制</strong></p>
+<p><strong>11.4 不可被继承的类和方法</strong></p>
+<pre><code>11.4.1 final用于修饰类是用来阻止类被继承
+11.4.2 final用于修饰方法是阻止方法被覆盖</code></pre>
+<p><strong>11.5 多重继承的问题</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="第12章-抽象类" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> 第12章 抽象类</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>在《公孙龙子·白马论》中提出了“白马非马”的诡辩，如果第二个马是抽象类的话，那么“白马”就是“马”。“公孙龙”认为“马”不能实例化，但是“白马”可以实例化。</p>
+<p>我认为战国时期的公孙龙所持有的“每个事物只能是它自己，事物间不存在联系”的观点是错误的，至少在面向对象中是如此。</p>
+<p>不能实例化的“马”，在面向对象编程中叫“抽象类”。</p>
+</div>
+</div>
+</div>
+<p><strong>12.1 抽象类概述</strong></p>
+<p><strong>12.2 抽象类的实现</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="第13章-接口" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 第13章 接口</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>在11章里讲过，Java不能多重继承，爸当官，妈当官，难道孩子不能同时继承两者的权力与财富么？在现实中，肯定能！（不信你看哪个公子，哪条鲶鱼，都是多重继承的……）</p>
+<p>但是在Java中却不能，Java不支持多重继承，如果你需要多重继承怎么办？用接口。</p>
+<p><a href="http://www.gotw.ca/publications/c_family_interview.htm" class="uri">http://www.gotw.ca/publications/c_family_interview.htm</a> 在这篇访谈中，C++的作者与Java的作者，都谈到了编程语言的设计，其实Java的作者对接口与类的设计也不满意。</p>
+</div>
+</div>
+</div>
+<p><strong>13.1 接口的历史</strong></p>
+<p><strong>13.2 接口的定义与实现</strong></p>
+<p><strong>13.3 接口与抽象类</strong></p>
+<p><strong>13.4 接口引入DEFAULT方法</strong></p>
+<p><strong>13.5 接口中引入静态方法</strong></p>
+<p><strong>13.6 接口的继承与多重继承</strong></p>
+<pre><code>13.6.1 接口的作用
+13.6.2 接口与抽象的区别</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第14章-多态" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> 第14章 多态</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>什么动物婴儿时四条腿，成年后两条腿，老年时三条腿？答案是：人。</p>
+<p>当我们调用走路的时候，同样的人，但是有不同的走路形态，小时候爬，长大后两条腿，老年后拄着一根拐杖。</p>
+<p>这就是多态，用统一的方式（走路），却实现了不同的形态（爬，走，拄拐）。</p>
+<p>本章介绍了如何用不同的方法实现多态。</p>
+</div>
+</div>
+</div>
+<p><strong>14.1 用继承来实现多态</strong></p>
+<pre><code>14.1.1 方法重写（Override）为多态提供基础
+14.1.2 向上转型（Upcasting）为多态提供统一调用方式</code></pre>
+<p><strong>14.2 用接口来实现多态</strong></p>
+<p><strong>14.3 用继承与用接口实现多态有什么不同？</strong></p>
+<p><strong>14.4 用泛型来实现多态</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="第15章-集合" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 第15章 集合</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>第8章的时候，我“黑”了一下数组，数组作为一种数据结构，实在是太原始了。</p>
+<p>那用什么方法来代替数组呢？就是本章讲的集合。</p>
+<p>集合比数组好用太多了，不一个时代的产品。</p>
+</div>
+</div>
+</div>
+<p><strong>15.1 集合的基本概念</strong></p>
+<pre><code>15.1.1 什么是集合
+15.1.2 集合与数组的区别</code></pre>
+<p><strong>15.2 Java集合框架的架构体系</strong></p>
+<p><strong>15.3 集合的核心接口与实现类</strong></p>
+<pre><code>15.3.1 Iterable接口
+15.3.2 Collection接口
+15.3.3 List接口以及实现类
+15.3.4 Set接口以及实现类
+15.3.5 Map接口以及实现类</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第16章-异常处理" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> 第16章 异常处理</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>嫦娥应悔偷灵药，碧海青天夜夜心。</p>
+<p>嫦娥犯的错，只能无限的懊悔，毕竟没有后悔药卖。但是Java中，为异常处理设置了非常多的防御措施，确保嫦娥偷不到灵药，防患于未然 :)</p>
+</div>
+</div>
+</div>
+<p><strong>16.1 异常的基础概念</strong></p>
+<pre><code>16.1.1 什么是异常
+16.1.2 异常的类型和层次结构
+16.1.3 Error和Exception的区别</code></pre>
+<p><strong>16.2 异常捕获处理</strong></p>
+<pre><code>16.2.1 throws语句
+16.2.2 try-catch-finally语句</code></pre>
+<p><strong>16.3 Java内置的常见异常类型</strong></p>
+<pre><code>16.3.1 非受检异常（Unchecked Exception）
+16.3.2 受检异常（Checked Exceptions）
+16.3.3 错误（Error）</code></pre>
+<p><strong>16.4 自定义异常</strong></p>
+<p><strong>16.5 异常链</strong></p>
+<p><strong>16.6 异常与资源管理</strong></p>
+</div>
+</div>
+</div>
+</section>
+<section id="第17章-函数式编程" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> 第17章 函数式编程</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>绝大部分Java编程书上，都不讲泛型，一是太难，二是觉得没什么用。但是，看看下面的语言：</p>
+<pre><code>Java之前不支持泛型，Java 5之后增加了泛型。
+C#之前不支持泛型，C# 2.0之后增加了泛型。
+Go语言之前不支持泛型，G为1.18之后增加了泛型。</code></pre>
+<p>难肯定是难的，有用肯定是有用的，花点时间是值得的。</p>
+<p>泛型解决的问题与继承、多态解决的问题是一脉相承的：<strong>代码复用</strong>。比如容器中可以存整数，也可存小数，还可以存小猫小狗这样的对象……如果逻辑一样，一点小改动就要重新调整代码，自己也受不了……</p>
+<p>现实中也是如此，油罐车可以拉煤油，可以拉汽油，甚至可以拉食用油……这当然可能会出现各种安全问题，所以需要很多的技术来确保安全。</p>
+</div>
+</div>
+</div>
+<p><strong>17.1 泛型的概念与作用</strong></p>
+<pre><code>17.1.1 Java泛型的历史
+17.1.2 泛型的用途与语法</code></pre>
+<p><strong>17.2 如何定义泛型类？</strong></p>
+<p><strong>17.3 如何定义泛型接口？</strong></p>
+<p><strong>17.4 如何定义泛型方法？</strong></p>
+<pre><code>17.4.1 泛型方法和多态的区别
+17.4.2 泛型方法与泛型类、泛型接口的区别</code></pre>
+<p><strong>17.5 类型通配符的概念与使用场景</strong></p>
+<pre><code>17.5.1 无界通配符（?）的概念与使用场景
+17.5.2 上界通配符（\&lt;? extends XXX\&gt;）的概念与使用场景
+17.5.3 下界通配符（\&lt;? super XXX\&gt;）的概念与使用场景
+17.5.4 通配符的PECS(Producer Extends,Consumer Super)原则</code></pre>
+<p><strong>17.6 泛型的继承与子类型规则</strong></p>
+<pre><code>17.6.1 泛型的不变性规则及其影响
+17.6.2 通配符的协变规则与逆变规则</code></pre>
+<p><strong>17.7 泛型中的类型擦除</strong></p>
+<pre><code>17.7.1 什么是类型擦除
+17.7.2 JVM在编译时如何处理泛型
+17.7.3 类型擦除对编程的影响
+17.7.4 泛型对数组的影响</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第18章-函数式编程" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> 第18章 函数式编程</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>离婚的原因是什么？千千万万，但是最重要的一个是：心变了。</p>
+<p>bug的原因是什么？千千万万，但是最重要的一个是：状态变了。</p>
+<p>什么叫状态变了呢？64核的CPU中，有1个核修改了全局变量，但其它63个核不知道；有个文件被修改了，但其它进程不知道…… 状态改变，是bug的高发原因。</p>
+<p>如何让离婚率变为0？方法是减少结婚，有感情的就同居得了。</p>
+<p>如何让bug减少？方法是减少命令式编程，增加函数式编程。</p>
+<p>于是，随着CPU核心的增多、分布式、协同式程序的增多，不改变程序状态的函数式编程“死灰复燃”了……</p>
+<p>本章从Lisp历史谈起，让大家清晰的了解什么叫函数式编程，为何Java的函数式编程不如Lisp那么优雅……</p>
+</div>
+</div>
+</div>
+<p><strong>18.1 第一门函数式编程语言：LISP语言</strong></p>
+<pre><code>18.1.1 Lisp简介
+18.1.2 Racket以及Racket的语法</code></pre>
+<p><strong>18.2 Lambda表达式</strong></p>
+<pre><code>18.2.1 什么是Lambda表达式
+18.2.2 无参数的Lambda表达式
+18.2.3 有一个参数的Lambda表达式
+18.2.4 有两个参数的Lambda表达式
+18.2.5 如何将Lambda表达式赋值给变量？</code></pre>
+<p><strong>18.3 函数式接口</strong></p>
+<pre><code>18.3.1 为什么需要函数式接口?
+18.3.2 函数式接口的种类有多少?
+18.3.3 函数式接口为何只能有一个抽象方法？
+18.3.4 方法引用
+18.3.5 如何自定义函数式接口?</code></pre>
+<p><strong>18.4 Stream API</strong></p>
+<pre><code>18.4.1 什么是Stream
+18.4.2 创建Stream的各种方式
+18.4.3 Stream操作的分类
+18.4.4 常见的中间操作
+18.4.5 常见的终端操作</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第19章-枚举类型" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> 第19章 枚举类型</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>在Java中，枚举已经强大到什么地步了呢？几乎所有类能做的事情，枚举都能做。枚举是一种特殊的类。</p>
+<p>枚举不止是简单的常量的集合，还可以拥有属性、方法和构造函数。还支持接口和实现。</p>
+<p>简单来说，<strong>枚举是受限的类</strong>。</p>
+</div>
+</div>
+</div>
+<p><strong>19.1 枚举概述</strong></p>
+<pre><code>19.1.1 什么是枚举
+19.1.2 枚举和常量的区别</code></pre>
+<p><strong>19.2 定义枚举</strong></p>
+<p><strong>19.3 枚举的高级特性</strong></p>
+<pre><code>19.3.1 枚举类型不能继承，但是可以实现接口
+19.3.2 枚举无法被实例化
+19.3.3 枚举常量实例最好设置为final
+19.3.4 不能依赖于枚举常量的序数
+19.3.5 values()和valueOf()方法
+19.3.6 EnumSet和EnumMap</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第20章-注解" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> 第20章 注解</h1>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>注解是Java 5之后引入的。</p>
+<p>对司机而言，开车的时候，最重要的信息是路上的指示牌。比如看到“前方有急转弯”，你就会注意一点。</p>
+<p>同样，注解类似于这些路牌，当看到@Override的时候，编译器会去查一下父类中是否有这个方法，当看到@Deprecated的时候，会提示这个方法已经过时了……</p>
+<p>注解的本质是提供额外的元数据和指示，帮助编译器、工具和开发者更好地理解和处理代码。</p>
+</div>
+</div>
+</div>
+<p><strong>20.1 什么是注解</strong></p>
+<p><strong>20.2 在代码中使用Java预定义的注解</strong></p>
+<pre><code>20.2.1 注解与注释的区别
+20.2.2 使用Java预定义的注解</code></pre>
+<p><strong>20.3 在代码中使用自定义的注解</strong></p>
+<pre><code>20.3.1 定义注解
+20.3.2 使用注解
+20.3.3 解析注解</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="第21章-反射" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> 第21章 反射</h1>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>据说，违反法律最刺激，要是违反了法律还不被制裁，就更是刺激了。比如古人有云：“妻不如…”，这句话你自己去搜搜吧。</p>
+<p>前面我们讲类的作用，又是封装，又是隐藏。然后突然来一个机制，啥封装，啥隐藏？直接给你显微镜下看的明明白白的……是不是很刺激？</p>
+<p>反射就是这样的，使用反射，咱们可以正在光明的走后门，所有的类定义的条条框框，都可以不用遵守。让你觉得像个特权阶级。</p>
+</div>
+</div>
+</div>
+<p><strong>21.1 反射的历史与发展</strong></p>
+<pre><code>21.1.1 起初，反射仅仅是为了跨平台
+21.1.2 后来，反射的发展就“失控”了</code></pre>
+<p><strong>21.2 获取Class对象</strong></p>
+<pre><code>22.2.1 Class对象是Java反射机制的基础
+22.2.2 获取Class对象的三种方式</code></pre>
+<p><strong>21.3 基础的反射API</strong></p>
+<pre><code>21.3.1 构造类操作
+21.3.2 属性类操作 
+21.3.3 方法类操作</code></pre>
+<p><strong>21.4 MethodHandler和VarHandle</strong></p>
+<p><strong>21.5 反射的局限</strong></p>
+<pre><code>21.5.1 性能开销问题
+21.5.2 破坏封装性
+21.5.3 反射代码往往难以维护</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>这本书写了21章，而且肯定还有很多内容没有覆盖到，如果我说一些漂亮话，什么“书山有路勒为径，学海无涯苦作舟”，让大家再多学点什么的，一般人实际上内心是比较崩溃的。</p>
+<p>那学到什么时候是个头啊？！</p>
+<p>实际上，你根本不需要学这么多。我之所以写这么多，是因为这是“写书”，其目的是“尽量覆盖”，而现实中做项目，其目的是“尽快做完下班”。</p>
+<p>如果你继续读我剩下的三本书，你会发现，每本书都只是用到这本书里“部分内容”，比如做游戏，你就用不到反射，也用不到函数编程，因此会不会这些稀奇古怪的东西，对开发游戏完全没影响。</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,57 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    number-sections: true
+
+editor: visual
+
+website:
+  title: "Java编程四部曲"
+  navbar:
+    left:
+      - href: index.qmd
+        text: "Java编程"
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - text: "Java编程四部曲"
+        href: index.qmd
+      - text: "付款方式与学伴社区"
+        href: pay.qmd
+      - text: "发布日期"
+        href: schedule.qmd
+      - text: "---"
+      - text: "四部曲之一: Java基础"
+      - text: "---"
+      - text: "点击查看完整目录"
+        href: content.qmd
+      - text: "---"
+      - text: "前言"
+        href: intro0.qmd
+      - text: "你为什么读不完一本书？"
+        href: intro1.qmd
+      - text: "这本书适合谁？"
+        href: chapter0.qmd
+      - text: "推荐与感谢"
+        href: thanks.qmd
+      - text: "第1章 初始Java"
+        href: chapter1.qmd
+      - text: "第2章 Hello World"
+        href: chapter2.qmd
+      - text: "第3章 面向对象编程"
+        href: chapter3.qmd
+      - text: "第4章 变量"
+        href: chapter4.qmd
+      - text: "---"
+      - text: "四部曲之二：Java Game"
+      - text: "---"
+      - text: "点击查看完整目录"
+        href: game-content.qmd
+      - text: "---"

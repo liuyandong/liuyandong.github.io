@@ -1,0 +1,17 @@
+/* css styles */
+u {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #DC143C;
+}
+
+.highlight {
+    background-color: yellow; /* 或者其他荧光颜色 */
+    padding: 0.1em;
+    border-radius: 0.2em;
+}
+
+/* 将侧边栏中显示的文字 "Contact" 设置为红色 */
+.sidebar a[href=game-content.qmd] {
+  color: red;
+}

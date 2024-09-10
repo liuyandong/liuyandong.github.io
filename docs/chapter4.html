@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Java编程四部曲 - 第4章 变量</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Java编程四部曲</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Java编程</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter4.html">第4章 变量</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Java编程四部曲</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pay.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">付款方式与学伴社区</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">发布日期</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">四部曲之一: Java基础</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">点击查看完整目录</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">你为什么读不完一本书？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">这本书适合谁？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./thanks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">推荐与感谢</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第1章 初始Java</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第2章 Hello World</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第3章 面向对象编程</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">第4章 变量</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">四部曲之二：Java Game</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./game-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">点击查看完整目录</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#变量的历史" id="toc-变量的历史" class="nav-link active" data-scroll-target="#变量的历史"><span class="header-section-number">1</span> 变量的历史</a></li>
+  <li><a href="#变量的命名" id="toc-变量的命名" class="nav-link" data-scroll-target="#变量的命名"><span class="header-section-number">2</span> 变量的命名</a></li>
+  <li><a href="#变量的数据类型" id="toc-变量的数据类型" class="nav-link" data-scroll-target="#变量的数据类型"><span class="header-section-number">3</span> 变量的数据类型</a>
+  <ul class="collapse">
+  <li><a href="#基本数据类型" id="toc-基本数据类型" class="nav-link" data-scroll-target="#基本数据类型"><span class="header-section-number">3.1</span> 基本数据类型</a>
+  <ul class="collapse">
+  <li><a href="#整数类型" id="toc-整数类型" class="nav-link" data-scroll-target="#整数类型"><span class="header-section-number">3.1.1</span> 整数类型</a></li>
+  <li><a href="#浮点数类型" id="toc-浮点数类型" class="nav-link" data-scroll-target="#浮点数类型"><span class="header-section-number">3.1.2</span> 浮点数类型</a></li>
+  <li><a href="#字符类型" id="toc-字符类型" class="nav-link" data-scroll-target="#字符类型"><span class="header-section-number">3.1.3</span> 字符类型</a></li>
+  <li><a href="#布尔类型" id="toc-布尔类型" class="nav-link" data-scroll-target="#布尔类型"><span class="header-section-number">3.1.4</span> 布尔类型</a></li>
+  <li><a href="#类型转换" id="toc-类型转换" class="nav-link" data-scroll-target="#类型转换"><span class="header-section-number">3.1.5</span> 类型转换</a></li>
+  </ul></li>
+  <li><a href="#引用数据类型" id="toc-引用数据类型" class="nav-link" data-scroll-target="#引用数据类型"><span class="header-section-number">3.2</span> 引用数据类型</a></li>
+  </ul></li>
+  <li><a href="#变量的作用域" id="toc-变量的作用域" class="nav-link" data-scroll-target="#变量的作用域"><span class="header-section-number">4</span> 变量的作用域</a>
+  <ul class="collapse">
+  <li><a href="#java变量的作用域" id="toc-java变量的作用域" class="nav-link" data-scroll-target="#java变量的作用域"><span class="header-section-number">4.1</span> Java变量的作用域</a></li>
+  <li><a href="#作用域的历史" id="toc-作用域的历史" class="nav-link" data-scroll-target="#作用域的历史"><span class="header-section-number">4.2</span> 作用域的历史</a></li>
+  <li><a href="#虚构的故事动态作用域和静态作用域" id="toc-虚构的故事动态作用域和静态作用域" class="nav-link" data-scroll-target="#虚构的故事动态作用域和静态作用域"><span class="header-section-number">4.3</span> 虚构的故事：动态作用域和静态作用域</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">第4章 变量</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>人生若只如初见，何事秋风悲画扇。</p>
+<p>等闲变却故人心，却道故人心易变。</p>
+</div>
+</div>
+</div>
+<p>在这个宇宙中，易变的可不止人心，而是一切。留不住时间，于是年龄会变。保不住新鲜，于是爱人会变。纹身店里，热恋时，胸前纹“一生最爱某某某”有多爱，分手后，用激光清理这些爱的“垃圾”，就有多恨。有办法么？有倒是有的，就是把“一生最爱”纹在身上，后面的“某某某”，用纹身贴纸即可。“一生最爱”是常量，而这个“某某某”就是本章要讲的变量。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>当我把纹身的故事讲给我的同事小潘的时候，我觉得这么有趣的故事，他应该会觉得我很风趣。</p>
+<p>结果他说：“栋哥，你知道大力神杯么？”</p>
+<p>我回复他说：“知道了，怎么了？”</p>
+<p>他说：“每届世界杯冠军都会在上面刻上自己的名字，为什么要洗呢？别人在胸前纹身，你为什么不可以把你的名字纹在她背后呢？”</p>
+</div>
+</div>
+<p>在编程中，变量有很多条条框框，比如，要有个名字，叫变量名。在软件开发领域很有影响力的Martin Fowler，敏捷软件开发的大神，在2009年7月14日曾经发过这样一条推，内容如下：There are only two hard things in Computer Science: cache invalidation and naming thins —— Phil Karlton。这句话翻译成中文是：“在计算机科学只有两件最难的事，缓存失效和变量命名。 – Phil Karlton”</p>
+<p>起初我觉得Phil Karlton的这句话是玩笑，但是后来想了一下，并不是玩笑。在编程中我们可没有那么多玩笑，给变量命名真的很难。</p>
+<p>在构建代码的过程中，最基本的构建活动是如何使用变量。要理解变量，一要像门卫一样问变量三个问题：“你是谁？”“从哪里来？”“到哪里去？”。</p>
+<p>在《西游记》的第八十二回《姹女求阳 元神护道》这一章里，有这样一段：</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>好呆子，把钉钯撒在腰里，下山凹，摇身一变，变做个黑胖和尚，摇摇摆摆走近怪前，深深唱个大喏道：“奶奶，贫僧稽首了。”那两个喜道：“这个和尚却好，会唱个喏儿，又会称道一声儿。”问道：“长老，那里来的？”八戒道：“那里来的。”又问：“那里去的？”又道：“那里去的。”又问：“你叫做甚么名字？”又答道：“我叫做甚么名字。”</p>
+</div>
+</div>
+</div>
+<p>这段描写里，八戒的回答相当于什么都没有回答，他既没有回答他从哪里来，又没有回答他向哪里去，又没有回答他是什么名字。仔细想来，我们很多时候都是八戒，好像是明白了，实际上什么都没说，什么也不知道。在学编程的时候，我们不能就这么糊弄过去，一定要搞清楚变量的来龙去脉。</p>
+<section id="变量的历史" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 变量的历史</h1>
+<p>在编程的最初，根本没有变量，也就不要说变量名了。最早期的电脑只解决特定的问题，不能编程。甚至，最早的电脑编程都不是我们现在见到的编程。</p>
+<p>我在电台里讲过世界上最早的计算机之一ENIAC，对这台电脑编程的方法是重新布线，每次编程就像重新装修房子改水电暖一样复杂。可能因为女人天生心灵手巧的原因吧，负责这项工作的人最初都是女程序员。有一篇名为《When Computers Were Women》文章介绍了当初给ENIAC“编程”的女程序员。对ENIAC贡献最多的六位女程序员，在1997年入选国际科技名人堂。在CNN拍的一个名为《Rediscovering WWII’s female ‘computers’》中也讲述了这些最初的女性程序员群体。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+这篇《When Computers Were Women》文章的pdf文件我也放在xueban.app这个社区中了。
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>在当年的ENIAC上，“写程序”意味着花好几天时间来手工更改线路。下图就是当年的工作场景。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/c4-01.png" class="img-fluid figure-img" width="518"></p>
+<figcaption>两名程序员在操作ENIAC电脑</figcaption>
+</figure>
+</div>
+<p>这样“编程”很麻烦，后来在冯·诺伊曼的指导下，Adele Goldstine写了一段程序，让ENIAC拥有了存储程序的功能，让计算机改变功能从几天的时间缩短为几小时，付出的代价是运行的效率变慢。1949年，冯·诺伊曼的建议和规划下，制造出了可以编程的计算机EDSAC，输入程序和数据使用的媒介是纸带。当改变计算机的功能时，不再需要重新连接电缆，只要需要不断读取纸带上的数据就可以。这样一来，变更计算机上的程序变得更加简单方便了。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/c4-02.png" class="img-fluid figure-img" width="574"></p>
+<figcaption>当初编程用的5孔和8孔纸带</figcaption>
+</figure>
+</div>
+<p>通过纸带输入程序看起来很神秘，实际上理解了汇编语言以后，并没有什么难理解的。</p>
+<blockquote class="blockquote">
+<p>如果本书的读者对汇编语言不了解，这一段可以跳过。对Java编程来说，理解汇编语言并没有太大的帮助。如果你是编程的爱好者，推荐深入的学习。我特别想把事情的原理搞清楚。</p>
+</blockquote>
+<p>国外有很多的爱好者，已经借助目前的硬件（比如树莓派），做出了当年的纸带仿制品。甚至当年的ENIAC电脑，也早已经用现代的技术做了复制。推荐大家在网上搜索“ENIAC on a Chip”，可以找到不少ENIAC用芯片做的复制品。当年重达27吨的电脑，如今可以被一个学生完全复原在一个只有8毫米的芯片上。</p>
+<p>再多强调一次，如果没有汇编语言的经验，可以跳过这一节，或者就把这一节当成故事来看好了。早在1949年的EDSAC电脑上，已经有了变量的概念。EDSAC电脑也有自己的模拟器，如果有人有兴趣，可以的网上搜索，或者在脚注里的链接去实际何体验一下这个与共和国同龄的电脑。在剑桥大学提供的一份名为《EDSAC Initial Orders and Squares Program》的文档， 这这份文档中，已经出现了变量，那时候的变量，更像是帮助记忆的符号。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>《EDSAC Initial Orders and Squares Program》这份文档我也放在xueban.app社区中了。</p>
+</div>
+</div>
+<p>每款CPU都有自己的机器语言，只有机器语言才能在CPU上运行，但是机器语言对人类实在太不友好了，没人会用0和1来写软件。我以计算机系的流行的X86汇编举例，要执行这样一条命令：将一个8位的值移动到寄存器AL中，AL寄存器的地址是000，这个8位的值是十进制97，用机器语言是这样写的：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10110000</span> <span class="bn">01100001</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>其中后面的01100001是97这个数字，前面的那8位二进制要分成两部分，10110在机器语言中代表“移动”，随后的三位000是AL寄存器的地址，所以10110000这一串的意思是“将一个值移动到AL寄存器中”。用这个太麻烦了，一不小心可能连0和1都写错了，所以，可以用十六进制稍微简化一下：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>B0 <span class="dv">61</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>这比用二进制好写一点，但是仍然没有太大改观。于是，人们想起了汇编语言，用mov来代替10110，用AL寄存器的名字来代替这个寄存器的地址000，至于97这个值，就用十六进制写吧，于是汇编就有了一点可读性：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>MOV AL<span class="op">,</span> <span class="er">61</span>h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>用AL代替000这个地址，意义重大！套用第一个登上月球的阿姆斯的一句话：“这是汇编语言的一小步，却是编程历史上的一大步”，<u> 从此，有了变量以后，人们可以不用再记内存真实的物理地址了。</u></p>
+<p>随后的编程语言，都采用了变量的形式。随着编程语言的进化，变量有了更多的意义。从机器语言到汇编语言，变量主要是用名字来代替数据的存储地址，使程序更容易编写，更容易阅读，更容易维护。后来像Java，C/C++语言，变量已经不仅仅是存储地址的名字，变量要从更多的维度来考虑，<span class="highlight"><strong>除了名字，还要从地址、数值、类型、作用域和生存周期这六个方面来考虑</strong></span>。接下来，我就从这六个方面来研究Java的变量。</p>
+</section>
+<section id="变量的命名" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 变量的命名</h1>
+<p>在Java编程语言中，正确地命名变量是至关重要的。一个好的变量名不仅能提高代码的清晰度，还能传达出有关变量的重要信息。例如，遵循命名规范的标识符能让读者一眼看出它是一个变量、常量、包，还是类。这样的命名实践对于代码的理解和后期维护都是非常有益的。Oracle官方网站上就有一套推荐的命名规范，对于想要深入了解这一主题的开发者来说，搜索“Naming Conventions”以访问相关文档是一个很好的起点。</p>
+<p>在Java编程语言中，除了字母（A~Z, a~z）、下划线（_）和美元符号（$）之外，任何Unicode字符都可以合法地用于变量命名，值得注意的是，数字不能作为变量名的首字符。这意味着在Java中，理论上可以使用各种非传统且独特的变量名。然而，官方还是推荐遵循以小写字母开头的变量命名习惯。这不仅符合大多数程序员的编码规范，而且有利于使用正则表达式对变量名进行统一处理和识别，从而提高代码的可读性和维护性。接下来，我们先来运行一段简单的代码。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> VariableNamingExample <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 分别声明两个整数类型的变量，名为myNumber和mynumber</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> myNumber <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> mynumber <span class="op">=</span> <span class="dv">11</span><span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 声明一个字符串类型的变量，名为myString</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> myString <span class="op">=</span> <span class="st">"Hello, World!"</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 声明一个布尔类型的变量，名为isDone</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">boolean</span> isDone <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">//声明并初始化为10的整数类型变量count</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> count <span class="op">=</span> <span class="dv">10</span><span class="op">;</span> </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"The value of myNumber is: "</span> <span class="op">+</span> myNumber<span class="op">);</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"The value of mynumber is: "</span> <span class="op">+</span> mynumber<span class="op">);</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"The value of myString is: "</span> <span class="op">+</span> myString<span class="op">);</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"The value of isDone is: "</span> <span class="op">+</span> isDone<span class="op">);</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"The value of count is: "</span> <span class="op">+</span> count<span class="op">);</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>上面的代码展示了变量名，该例子运行之后，得到的结果如下：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>The value of myNumber is<span class="op">:</span> <span class="dv">10</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>The value of mynumber is<span class="op">:</span> <span class="dv">11</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>The value of myString is<span class="op">:</span> Hello<span class="op">,</span> World<span class="op">!</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>The value of isDone is<span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>The value of count is<span class="op">:</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在Java编程语言中，标识符是一种用于命名各种编程元素的字符序列，这些元素不仅涵盖了变量，还延伸至许多其他重要的结构。比如，标识符还包括以后要讲的类名、接口名、方法名、包名及常量等众多编程标识。什么字符可以用作合法的标识符呢？这些字符包括字母（无论大小写）、数字、下划线（_）以及美元符号（$）。但是对变量来说，还是尽量遵守如下的约定：</p>
+<ol type="1">
+<li>使用字母作为变量名的首字符更符合人们的阅读习惯，更容易理解和识别。使用下划线（_）作为首字符虽然合法但是不推荐。使用美元符号（$）作为首字符虽然也合法，但是容易跟一些框架冲突。</li>
+<li>Java编程语言具有大小写敏感特性，这意味着在变量名的识别与处理过程中，系统会严格区分大小写字母，即同一名称但大小写不同的变量会被视为两个独立的标识符实体。比如代码中的myNumber和mynumber就是两个不同的变量。</li>
+<li>采用具有明确含义的名字是编程中的良好实践，而驼峰命名法（camelCase）作为其中一种流行的标准格式，被广泛应用于Java开发中。在驼峰命名法下，单词首字母小写且后续每个单词首字母大写的书写规则，能够清晰地将多个词合成一个连贯且易于理解的标识符名称，从而有效增强代码的一致性和可辨识度。比如代码中的isDone。</li>
+<li>在Java编程语言中，保留字（Reserved Words）是预先赋予特定含义的关键词，它们被系统内部使用来表示特殊的语法规则或执行特定的功能。由于这些保留字具有固定的用途和功能，因此不能将它们用作变量名、类名或其他标识符名称，否则会引发编译错误。例如，诸如if、else、class、public等均属于Java的保留字，不能作为自定义的编程元素标识符使用。</li>
+</ol>
+</section>
+<section id="变量的数据类型" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 变量的数据类型</h1>
+<p>在Java编程语言中，必须为每个变量明确指定数据类型。这是由于Java属于静态类型语言，意味着所有变量的数据类型必须在编译时确定。这种设计使编译器能够提前识别类型错误，从而增强代码的安全性和稳定性。</p>
+<p>在Java中，为变量指定类型是通过在声明变量时首先写出数据类型，紧接着是变量名，最后是赋值或初始化。Java 10及更新版本引入了局部变量类型推断，这允许开发者在某些情况下使用var关键字声明变量，从而简化代码。但即使使用var，编译器在背后仍然会确定变量的确切类型，所以这并不是真正的动态类型。以下展示了如何为变量指定类型。在这个例子中，height被明确声明为double类型，而score则利用var关键字让编译器推断其类型。这种做法虽然提高了代码的简洁性，但应谨慎使用以保持代码的清晰度。</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// 声明并初始化一个double类型的变量</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> height <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Java 10及以上版本支持使用var关键字进行局部变量类型推断</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 编译器会根据右侧的初始值自动推断出score为int类型</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> score <span class="op">=</span> <span class="dv">85</span><span class="op">;</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在Java编程语言中，遵循前置类型标注的语法约定，即变量的类型声明必须在变量名之前。这种方式与C等较早的语言一致，它们都采用了类似的前置类型定义规则。与之相对，一些现代编程语言如Swift和Kotlin则更偏好后置类型标注，也就是先声明变量名，然后再指定其数据类型。两种类型标注方式的选择更多取决于习惯和个人偏好。有些人认为两者在代码可读性上存在差异，但实际上，现代集成开发环境(IDE)会通过颜色编码清晰地区分类型和变量名，因此在阅读代码时并不会造成实质性的影响。</p>
+<p>接下来，我们将深入解析Java变量的数据类型体系。对于初学者而言，可能会感到困惑的是，Java同时提供了基本数据类型 (primitive data type，也称为原始类型)和引用数据类型(reference data type)，这两套系统看似功能有所重叠。那么，为什么要引入这两套数据类型体系呢？官方解释指出，Java之所以设计两套数据类型系统，是为了满足不同的编程需求。一方面，基本数据类型适用于简单的数值计算与存储，具有更高的性能效率；另一方面，引用数据类型则更侧重于提供面向对象编程的支持，从而实现更灵活、更强大的数据结构和操作。</p>
+<p>在深入探讨具体细节之前，我想先分享一点我的个人看法。我认为，尽管Java 提供了两套看似功能相似的数据类型体系，但其带来的优势可能并没有那么显著，而随之而来的问题却不容忽视。从性能角度来看，这样的设计在某些场景下提升了效率，但如果追求极致性能，我们或许更应该考虑使用C语言或借助编译器优化等手段。然而，在我看来，这一设计的主要不足在于它增加了学习的难度，容易使程序员在实际开发过程中混淆两种类型的使用，从而导致错误率上升。</p>
+<p>为了解决这种类型混淆的问题并简化编程体验，Java 5版本引入了一项关键特性：自动装箱（autoboxing）与拆箱（unboxing）机制。该机制允许程序在基本数据类型与对应的包装类之间自动进行转换，表面上减少了潜在的代码错误。然而，这也并非没有代价：一方面，自动装箱与拆箱操作本身并不高效；另一方面，频繁地进行自动装箱和拆箱操作会增加额外的对象创建和垃圾回收压力，特别是在循环或大量数据处理场景下，可能会对性能产生负面影响。</p>
+<p>尽管存在这些问题，但对于Java的学习者而言，理解并掌握这些优缺点仍然至关重要。值得一提的是，后续出现的语言如C#和Kotlin在发展过程中也借鉴了Java 的自动装箱与拆箱机制，并在此基础上进行了各自的设计改进和优化。因此，掌握 Java的基础知识，对于学习C#和Kotlin这两门同样流行的编程语言也会有所帮助，让学习过程更加轻松。</p>
+<p>基本数据类型直接存储固定的、不可分割的基本值，例如数字和字符。具体而言，Java共有8种基本数据类型，包括4种整数类型(int、byte、short、long)、2 种浮点数类型 (float、double)、1 种字符类型(char)以及布尔逻辑类型(boolean)。这些类型的变量在内存中占用固定大小的空间。</p>
+<p>与基本数据类型相比，引用数据类型更加复杂和灵活。它们并不直接存储具体的值，而是存储指向内存中其他位置的引用或地址，实际数据则存放在该地址处。这类数据类型涵盖了类(class)、接口(interface)、数组(array) 以及其他复合结构。值得一提的是，有一种特殊的类被称为包装类，它们为每种基本数据类型提供了一个对应的引用数据类型，其对应关系如下表所示。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>基本数据类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+<tr class="even">
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr class="odd">
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr class="even">
+<td>int</td>
+<td>Int</td>
+</tr>
+<tr class="odd">
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr class="even">
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr class="odd">
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr class="even">
+<td>char</td>
+<td>Character</td>
+</tr>
+</tbody>
+</table>
+<p>通过使用包装类，我们可以将基本数据类型的值转换为对象，从而在需要对象的地方使用它们，例如对象实例(可以包含多个属性和方法的实体)、列表(List)、集合 (Set)、映射(Map)以及更高级的数据结构如树(Tree) 和图(Graph)等。这个转换过程由Java提供的自动装箱和 拆箱机制自动完成，使得基本数据类型与它们的包装类之间能够无缝衔接。</p>
+<p>尽管包装类为基本数据类型提供了对象化的表现形式和更丰富的功能扩展，但我们不能忽视基本数据类型作为Java语言基石的重要性。基本数据类型的变量存储效率高，占用内存少，这对于性能敏感的应用场景至关重要。此外，对基本数据类型的操作通常更为直接和高效，无需涉及装箱和拆箱过程带来的额外开销。因此，理解和掌握基本数据类型对于编写高效的Java代码至关重要。接下来，让我们深入学习基本数据类型。</p>
+<section id="基本数据类型" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="基本数据类型"><span class="header-section-number">3.1</span> 基本数据类型</h2>
+<p>在 Java 编程语言中，基本数据类型是构建程序逻辑的基石。它们是最底层、最基础的数据结构，用于直接存储不可分割的原始值，而非引用其他对象或数据结构。</p>
+<p>这些基本数据类型的变量在内存中占用固定大小的空间，并且在声明时就确定了其存储的内容类型和范围，访问速度快。因此，在处理大量简单数据或者对性能要求较高的场景中，选择合适的基本数据类型对于程序的效率和性能至关重要。</p>
+<p>前文已经提到，Java中共有8种基本数据类型，对这8种基本数据类型，可以分为以下4类来学习：整数类型、浮点数类型、字符类型以及布尔类型。</p>
+<section id="整数类型" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="整数类型"><span class="header-section-number">3.1.1</span> 整数类型</h3>
+<p>整数类型包括byte、short、int、long，分别对应不同的字节长度和数值范围。</p>
+<p>byte 占用1字节，取值范围为-128至127</p>
+<p>short 占用2字节，取值范围为-32,768至32,767</p>
+<p>int 占用4字节，取值范围为-2<sup>31</sup>至2<sup>31</sup>-1</p>
+<p>long 占用8字节，取值范围为-2<sup>63</sup>至2<sup>63</sup>-1</p>
+<p>在进行整数运算时，尤其需要警惕潜在的溢出风险。当计算结果超出目标整数类型的取值范围时，系统将无法正确存储该结果，进而引发溢出现象。需要注意的是，Java 语言并未内置自动检测和处理整数溢出的功能，这意味着程序员在实现涉及整数运算的代码段时，务必谨慎对待可能发生的溢出问题。</p>
+<p>接下来，我们将通过如下代码示例展示 Java 整数的溢出风险以及溢出后 Java 所采用的处理方式。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> OverflowExample <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Java中int类型的范围是-2^31到2^31-1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> maxInt <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">MAX_VALUE</span><span class="op">;</span> <span class="co">// 最大整数值 2147483647</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"整数所能表示的最大值为: "</span> <span class="op">+</span> maxInt<span class="op">);</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 当尝试加上一个正值时，会发生溢出</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出结果将是 -2147483648，因为发生溢出，数值从整数的最大值回到了最小值</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> overflowedValue <span class="op">=</span> maxInt <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"最大值上加1之后，会得到： "</span> <span class="op">+</span> overflowedValue<span class="op">);</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> minInt <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">MIN_VALUE</span><span class="op">;</span> <span class="co">// 最小整数值 -2147483648</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"整数所能表示的最小值为: "</span> <span class="op">+</span> minInt<span class="op">);</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>上面的代码运行之后，输出结果如下：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>整数所能表示的最大值为<span class="op">:</span> <span class="dv">2147483647</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>最大值上加<span class="er">1</span>之后，会得到： <span class="op">-</span><span class="dv">2147483648</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>整数所能表示的最小值为<span class="op">:</span> <span class="op">-</span><span class="dv">2147483648</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在这个示例程序中，我们首先获取 int 类型的上限值，并将其打印输出到终端。随后，我们尝试将这个已知的最大值加 1。由于这个操作会导致结果超出 int 类型的有效范围限制，因此系统会发生整数溢出。这意味着计算后的结果会循环回绕到 int 类型的下限，即最小可能值。</p>
+<p>这种处理机制被称为回绕（wrap-around），指的是当数值超出某个数据类型的表示范围时，会回绕到该数据类型的最小值。例如，当一个 int 类型的变量超过其最大值时，它会 “回绕” 到 int 类型的最小值，就好像数字在一个圆环上循环一样。</p>
+<p>在编程时，选择合适的整数类型对于提高代码效率和可读性至关重要。因此，我选择整数类型的策略是：在没有特殊需求或明确目的的情况下，优先选择 int 类型作为默认的整数数据类型。<u><strong>接下来，我将深入剖析这一原则背后的原因。</strong></u></p>
+<p>前文提到，Java 虚拟机 (JVM) 具备一套全面的指令集体系，涵盖了诸如算术运算、逻辑操作、比较判断、存储器管理以及控制流程等多方面的指令。这套指令集能够处理包括 int、long、float、double、boolean 和 char 在内的多种基本数据类型的运算。然而，值得注意的是，对于 byte 和 short 这样的较小整数类型，JVM 并没有特地设计单独的操作码来进行直接处理。</p>
+<p>相反，为了简化指令集的设计结构，并提高代码执行效率，JVM 采用了隐式类型提升机制。当遇到 byte 或 short 类型的变量参与运算时，JVM 会先将这些值自动转换为int类型，然后再运用通用的 int 类型操作指令来执行实际操作。换句话说，虽然 byte 和 short 没有专门的操作码，但它们在运算时会被 “提升” 为 int 类型，从而保证了指令集的简洁性和统一性，并在性能上实现了优化平衡。</p>
+<p>既然在 Java 运算过程中，byte 和 short 类型的变量都会被自动提升至 int 类型进行操作，那么为什么不从一开始就只保留 int 类型呢？当然，在特定场景下，这种“一步到位”的做法并不总是最优解。例如，在对存储空间要求极为苛刻的情况下，选择 byte 或 short 能够显著地压缩数据尺寸，从而发挥关键作用。特别是在处理图像像素数据、网络传输等需要大量紧凑存储和高效传输的领域中，byte 类型和 short 类型的数据类型都有其独特的价值和必要性。</p>
+</section>
+<section id="浮点数类型" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="浮点数类型"><span class="header-section-number">3.1.2</span> 浮点数类型</h3>
+<p>在Java编程语言中，存在两种浮点数类型：</p>
+<p><strong>float</strong>：单精度浮点数类型，占用4字节（共计32位）内存，其数值范围大致从3.4e-038到3.4e+038，能够提供大约6到7位的可靠有效数。由于其较小的内存占用，float类型适用于对精度要求相对不高且需节省存储资源的应用场景。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>3.4e-038</strong> 表示的是 3.4 乘以 10 的负 38 次方，即小数点向左移动 38 位。这是 float 类型的最小正数值，接近于 0。3.4e+038 表示的是 3.4 乘以 10 的正 38 次方，即小数点向右移动 38 位。这是 float 类型的最大正数值。</p>
+</div>
+</div>
+<p><strong>double</strong>：双精度浮点数类型，占用8字节（共计64位）内存，数值范围大致为1.7e-308到1.7e+308，并能确保大约15到16位的有效数字精度。由于更高的精度表现，double通常被推荐为默认的浮点数类型，在不考虑特殊内存约束或精确度需求的情况下应优先使用。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1.7e-308</strong> 表示的是 1.7 乘以 10 的负 308 次方，即小数点向左移动 308 位。这是 double 类型的最小正数值，接近于 0。1.7e+308 表示的是 1.7 乘以 10 的正 308 次方，即小数点向右移动 308 位。这是 double 类型的最大正数值。</p>
+</div>
+</div>
+<p>这两种浮点数类型 (float 和 double) 均支持正负数表示，并且它们在实际存储时都遵循 IEEE 754 标准。这意味着它们无法准确表示所有实数，尤其是那些不能被精确转换成二进制分数的十进制数。</p>
+<p>之所以会有精度损失的问题，是因为计算机内部采用二进制来表示数字。由于十进制小数并非都能精确转换为有限长度的二进制小数，这导致了部分十进制浮点数在计算机内只能近似表示。例如，十进制的 0.1 无法用二进制精确表示，因此在计算机中存储和计算时会产生微小的误差。</p>
+<p>当涉及到比较两个浮点数是否相等时，由于上述精度损失的存在，直接使用等于运算符 “==” 来进行比较可能会得到意外的结果。例如，两个理论上应该相等但实际上由于浮点计算过程中产生的微小误差而变得不完全相等的浮点数，用 “==” 比较将返回 false。为了正确地比较两个浮点数是否足够接近以被认为是相等的，通常采用的方法是设定一个合理的误差范围（也称为 epsilon 值），并检查两者之差的绝对值是否小于这个误差阈值。</p>
+<p>接下来，我们将通过示例演示浮点数存在的问题以及解决方法，代码如下所示：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">math</span><span class="op">.</span><span class="im">BigDecimal</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> FloatingPointPrecisionDemo <span class="op">{</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 演示浮点数表示不精确</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> a <span class="op">=</span> <span class="fl">0.0001f</span><span class="op">,</span> b <span class="op">=</span> <span class="fl">100000.0f</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出可能不是预期的100000.0001</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"直接加法结果: "</span> <span class="op">+</span> <span class="op">(</span>a <span class="op">+</span> b<span class="op">));</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 使用误差范围（epsilon）进行浮点数比较</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> x <span class="op">=</span> <span class="fl">0.1f</span><span class="op">,</span> y <span class="op">=</span> <span class="fl">0.10000001f</span><span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">boolean</span> areAlmostEqual <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span><span class="op">(</span>x <span class="op">-</span> y<span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.00001f</span><span class="op">;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"使用误差范围判断是否相等: "</span> <span class="op">+</span> areAlmostEqual<span class="op">);</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 在金融应用中建议使用 BigDecimal 类</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">BigDecimal</span> amount1 <span class="op">=</span> <span class="kw">new</span> <span class="bu">BigDecimal</span><span class="op">(</span><span class="st">"1234.56"</span><span class="op">);</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">BigDecimal</span> amount2 <span class="op">=</span> <span class="kw">new</span> <span class="bu">BigDecimal</span><span class="op">(</span><span class="st">"789.01"</span><span class="op">);</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">BigDecimal</span> sum <span class="op">=</span> amount1<span class="op">.</span><span class="fu">add</span><span class="op">(</span>amount2<span class="op">);</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"精确的货币计算结果: "</span> <span class="op">+</span> sum<span class="op">);</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>运行之后，结果如下：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>直接加法结果<span class="op">:</span> <span class="fl">100000.0</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>使用误差范围判断是否相等<span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>精确的货币计算结果<span class="op">:</span> <span class="fl">2023.57</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在计算机编程中，浮点数类型的累积误差是指在进行一系列浮点数运算过程中，由于浮点数的表示方式和精度限制，导致最终结果与理论预期值之间产生的偏差。特别是对于那些不能精确表示为二进制分数的十进制数，在进行加减乘除等连续运算时，每一步计算都会引入一些微小的舍入误差。这些误差在单次运算中可能非常微小，几乎可以忽略不计，但随着计算步骤的增加，这些误差会逐渐累积起来，从而可能导致最终结果与实际期望值有较大的差异。这个问题在需要高精度计算的领域，如金融、科学计算等，尤为重要。</p>
+<p>接下来，我将通过一个例子来解释浮点数类型的累积误差问题。</p>
+<p>美国政府问责局（Government Accountability Office，GAO）曾发布过一份官方文件，其中披露了在1991年2月25日海湾战争期间发生的一起重大事件。这份报告指出，爱国者导弹防御系统遭遇了一次关键性失误，未能成功拦截一枚飞毛腿导弹，导致该导弹击中一处美军营房并造成 28 名士兵不幸丧生的悲剧。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>这篇报告名为《Roundoff Error and the Patriot Missile》，我已经放到xueban.app上了，该报告详细讲了事故原因。</p>
+</div>
+</div>
+<p>针对这一事件，专家 Robert Skeel 撰写了一份深度剖析报告。报告显示，爱国者导弹防御系统内部计时机制的设计缺陷是此次失效的核心原因。具体来说，由于计算机处理浮点数计算时无法避免微小的精度误差，该系统的计时精确度每经过 8 小时会产生约 0.0275 秒的累积偏差。截至事故发生之时，该系统已连续运行了整整 100 个小时，累计产生了大约 0.34375 秒的时间差错。</p>
+<p>值得注意的是，飞毛腿导弹以高达 5 马赫的速度飞行，即每秒钟可以飞行约 1.7 公里。因此，这看似微不足道的 0.3 秒多的时间误差，在实际操作中却相当于让导弹飞行了约 600 米的距离，足以使其绕过原本应能拦截到的防线。正是这微小的精度损失，最终导致了这场重大灾难性后果。</p>
+<p>爱国者导弹防御系统失误的案例，仅仅是计算机在执行浮点数运算时的常规 “差错” 的一个缩影。计算机在执行涉及浮点数运算的任务时，由于其二进制表示机制、精度限制以及标准化浮点数格式（如 IEEE 754）的设计特性，产生 “小差错” 是必然的结果。这些看似微不足道的 “小差错”，提醒着我们计算机并非精确无误的工具，也激发着我们深入探究计算机如何处理数字的核心领域 —— 小数计算。</p>
+<p>对计算机如何处理小数的历史进行深入探究，或许对实际编程没有直接的指导意义，但这段历史对于编程爱好者而言却充满了魅力。因此，我决定将关于计算机如何处理小数的历史附于下面，当作补充阅读材料，以飨那些对此怀揣好奇的读者。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+计算机中小数处理的历史
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>当前，计算机科学中广泛采用的 IEEE 754 标准为大多数计算平台提供了表示带有小数部分的实数的方法。在 Java 编程语言中，我们所熟知的 float 数据类型名称源于 “floating-point” 这一术语，意指浮点数；而 double 类型的命名则因其精度大约是 float 类型两倍的特点而来。</p>
+<p>提及浮点数，人们自然会联想到其对应的 “定点数 (fixed-point)”。事实上，确实存在定点数这一概念，并且了解了定点数之后，对于浮点数的理解将更为轻松和直观。</p>
+<p>接下来，我将详细介绍定点数是什么，以此作为理解浮点数的一个重要铺垫。</p>
+<p><strong>定点数</strong></p>
+<p>定点数（fixed-point numbers）是一种用于表示小数的方法，通过将数值分成整数部分和小数部分来实现。这种表示方式在嵌入式系统、DSP（数字信号处理）以及一些低功耗或性能受限的计算环境中尤为常见，因为这些环境可能不支持浮点运算，或者浮点运算的开销较高。类似地，在金融与商业领域，使用定点数可以有效的减少二进制与十进制转换的误差。</p>
+<p>定点数通常采用固定长度的二进制位模式来编码数据，其中分配给整数和小数的位数均预先设定好。例如，在一个16位的定点数格式中，可以将其划分为8个整数位和8个小数位，小数点则始终固定于第8位（从低位数算起）。定点数的表示方法有多种，比如在数字信号处理领域中采用的Q格式表示法，在金融与商业领域，会用到BCD码的方式。接下来，我详细介绍一下BCD（Binary-Coded Decimal，二进制编码的十进制）码的表示方法。</p>
+<p>以下是BCD码的具体表示规则：它用四位二进制数精确对应十进制数的一个数字，两者之间有一一对应的转换关系，如下表所示:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>十进制数字</th>
+<th>二进制数字</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0000</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0001</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0010</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0011</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0100</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0101</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0110</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0111</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>1000</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>1001</td>
+</tr>
+</tbody>
+</table>
+<p>由上面的对应表可知，每个十进制数对应4位二进制数字。如果要表示一位十进制数8，则可以用1000来表示，如果要表示两位十进制数10，则要分别表示1和0，其中的1表示为4位二进制0001，0则表示为4位二进制 0000。可以把两个十进制数字放一个8位二进制中，正好一个字节中，这种把两个十进制放入一个字节的方法被称之为压缩BCD（packed BCD）。那么十进制数字10用压缩BCD的方式表示为00010000。</p>
+<p>以日常生活中去超市为例，我们会经常看到商品的标价为19.99元、9.99元这样的价格。在超市场景下，计价系统的小数位事先确定为两位小数，也就是精确度保留到分即可。假设我开了一家超市，要处理的账目是±1000万，精度精确到分，这意味着系统可以表示如下范围的数字：-10,000,000.00元到 +10,000,000.00元。</p>
+<p>当我要表示一笔3,898,190.25元的记录，可以从最后开始，以两位十进制数字为单位进行拆分，写成如下的方式：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>3</th>
+<th>89</th>
+<th>81</th>
+<th>90</th>
+<th>25</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>00000011</td>
+<td>10001001</td>
+<td>11000001</td>
+<td>10010000</td>
+<td>00100101</td>
+</tr>
+</tbody>
+</table>
+<p>定点数因其固有的特性，在特定应用场景下具有一些优势：其固定的数值表示形式使得存储空间需求更小，同时避免了复杂浮点运算的开销。然而，这种数据类型也存在局限性，即其数值范围和精度是预先设定且不可变的，无法根据实际需求进行灵活调整。若已知待处理的数据具有明确的数值边界，则采用定点格式的小数无疑是明智之举，它能够确保在预设范围内不会出现意外的精度误差。</p>
+<p>在Java的标准库中，并未直接提供对定点数类型的内建支持，而是侧重于原生支持浮点数类型，如float和double。尽管浮点数类型的计算速度可能相对较低，并且在某些情况下会出现一定的精度损失，但它们具备比定点数更高的精度水平以及更为宽广的数值表示能力。接下来，我们一同深入探讨Java中的浮点数类型的机制。</p>
+<p><strong>浮点数</strong></p>
+<p>在讲浮点数之前，先来讲一下如何用二进制表示小数。在计算机中，小数可以使用二进制表示法来存储和处理。二进制小数表示法基于科学计数法，将小数部分转换为二进制数，并使用科学计数法的形式来表示数值。</p>
+<p>将十进制小数转化为二进制小数的步骤如下：</p>
+<ol type="1">
+<li>将小数部分乘以 2，得到积和整数部分。</li>
+<li>将积的整数部分作为二进制数的一位，并将小数部分保留。</li>
+<li>将小数部分重复第 1 步和第 2 步，直到小数部分为 0 或达到所需的精度。</li>
+</ol>
+<p>例如，将十进制小数0.625转化成二进制小数的过程如下：</p>
+<p>0.625 × 2 = 1.25，整数部分为 1，小数部分为 0.25</p>
+<p>0.25 × 2 = 0.5，整数部分为 0，小数部分为 0.5</p>
+<p>0.5 × 2 = 1.0，整数部分为 1，小数部分为 0</p>
+<p>因此，0.625 的二进制表示为 0.101。</p>
+<p>那如何将二进制小数转换为十进制小数呢？其方法与将整数从十进制转换为二进制的方法类似，只不过需要将每一位的权值改为 2-n，其中n表示该位在二进制数中的位数。以下是将二进制小数转换为十进制小数的方法：</p>
+<ol type="1">
+<li>将二进制小数的整数部分和小数部分分别转换为十进制数。</li>
+<li>对于小数部分，将每一位的权值改为 2-n，其中n表示该位在二进制数中的位数。</li>
+<li>将小数部分的每一位乘以对应的权值，并将所有结果相加，得到十进制小数的值。</li>
+</ol>
+<p>举个例子，以110.1101这个带有小数点的二进制数为例，</p>
+<p><img src="img/c4-03.png" class="img-fluid" width="599"></p>
+<p>当我们在表示一个很大的数的时候，比如美国国债是$25,000,000,000,000，数学上会采用科学计数法来计数，写成这样：2.5 × 1013。在科学计数法中，我们称2.5为首数，10的幂是13，我们称13为指数。在计算机中也类似，只是给首数改了个名字叫有效数，指数没改名字，还是叫指数。</p>
+<p>当我们看到2.5 × <span class="math inline">\(10^{13}\)</span>的时候，知道把小数点向右移动13位，当看到4.5 × <span class="math inline">\(10{-3}\)</span>的时候，把小数点向左移动3位成为0.00045。因此只要知道了指数，就知道怎么浮动小数点了，指数是正的就向右移，指数是负的就向左移。这就是浮点数的基本原理了，小数点浮动的方向和浮动多少，都由指数决定。 浮点数还有一个规定叫写法的规范化，什么叫规范化呢？还是以美国的国债为例，可以写成2.5 × <span class="math inline">\(10^{13}\)</span>，虽然写成25 × <span class="math inline">\(10^{12}\)</span>、250 × <span class="math inline">\(10^{11}\)</span>都可以理解，但是后面这两种不规范。对十进制来说，规范化是规定有效数只能介于0和10之间。对二进制浮点数来说，规范化的写法第一位只能是1。以110.1101为例，规范化的二进制浮点数只能是1.101101 × <span class="math inline">\(2^2\)</span>这一种形式，其余的形式都是不规范的。</p>
+<p>因为规范化的二进制浮点数第一位永远只能是1，所以根本就没必要存储这一位。因此，对实数来说，IEEE 754规定，只需要存储三个信息即可：代表正负的符号位、代表如何浮动小数点位置的指数和有效值。以IEEE定义的4个字节的float单精度格式为例。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/c4-04.png" class="img-fluid figure-img" width="605"></p>
+<figcaption>IEEE 754规定的单精度浮点数float</figcaption>
+</figure>
+</div>
+<p>长度为1位的符号位s代表正数还是负数，0表示正数，1表示负数。</p>
+<p>随后的8位是指数位e，8位可以代表0到255的数值。在此，我们取1到254，0和255留作他用。小数点有可能向左浮动，也有可能向右移动，我们规定这个数减去127，正好可以左移或者右移，此处的 127我们称之为偏移量。</p>
+<p>接下来是23位有效数f，前面已经讲过，有效数的第一位永远是1，所以不用存这一位，只需要在计算的时候补上这个1即可。综上，这个特定的数可以用这个公式来计算：</p>
+<p><span class="math inline">\((-1)^s × 1.f × 2^{e-127}\)</span></p>
+<p>还有几种特殊情况要单独考虑，比如指数位都是0或者都是1的时候，这也是为什么指数位要保留了0和255两个数用作其它用途的原因，表示无穷大（Positive Infinity），无穷小（Negative Infinity）或者不合法NaN（Not a Number），比如当0/0时或者对一个负数进行平方根操作会返回不合法。这三种情况在实际应用中并不多见，Java为其提供了相应的常量分别是Float.POSITIVE_INFINITY、Float.NEGATIVE_INFINITY和Float.NaN（相应的double类型也有这三个常量）。</p>
+<p>接下来我们来看看单精度浮点的表示范围，理解了原理，套用上面的公<span class="math inline">\((-1)^s × 1.f × 2^{e-127}\)</span>，我们知道绝对值最小的正负二进制是：</p>
+<p><span class="math inline">\((-1)^s x (1.00000000000000000000000)_2 × 2^{-126}\)</span></p>
+<p>指数位为<span class="math inline">\((1)_{10}\)</span>，也就是让小数点移动到最左侧，有效值是一个1，后面跟23个0。这个数用十进制表示，近似的等于±1.17549435 × <span class="math inline">\(10^{-38}\)</span>。最大表示的数是:</p>
+<p><span class="math inline">\((-1)^s x (1.11111111111111111111111)_2 × 2^{-127}\)</span></p>
+<p>指数位为<span class="math inline">\((254)_{10}\)</span>，让小数点移动到最右边。有效值为24个1。这个数如果用十进制表示的话，近似的等于±3.40282347 × <span class="math inline">\(10^{38}\)</span>。所以，只要是用IEEE 754规定的浮点数，float类型的取值范围是 ±1.17549435 x <span class="math inline">\(10^{-38}\)</span> 到 ±3.40282347 × <span class="math inline">\(10^{38}\)</span>。</p>
+<p>以上就是单精度浮点数的原理，双精度浮点数的原理跟单精度浮点数类似，不再赘述。</p>
+</div>
+</div>
+</section>
+<section id="字符类型" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="字符类型"><span class="header-section-number">3.1.3</span> 字符类型</h3>
+<p>在 Java 语言中，字符类型作为一种基础数据类型占据着重要地位，它专门用于处理单个字符信息。每个 char 变量占用两个字节（16 位）的空间，并采用 Unicode 字符集进行编码处理，确保能够表示全球范围内的多种语言和特殊符号。</p>
+<p>接下来，我们将通过示例详细展示 字符类型的常见用法，包括声明、初始化、比较、类型转换以及在字符串处理中的应用，</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> CharExample <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 声明并初始化一个字符类型的变量</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> myChar <span class="op">=</span> <span class="ch">'D'</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出字符</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"myChar这个字符是: "</span> <span class="op">+</span> myChar<span class="op">);</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 使用字符类型进行比较操作</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> anotherChar <span class="op">=</span> <span class="ch">'B'</span><span class="op">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>myChar <span class="op">==</span> anotherChar<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"两个字符相同."</span><span class="op">);</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"两个字符不同"</span><span class="op">);</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 将ASCII码转换为字符类型</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ASCII值对应字符'D'</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> asciiValue <span class="op">=</span> <span class="dv">68</span><span class="op">;</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> charFromAscii <span class="op">=</span> <span class="op">(</span><span class="dt">char</span><span class="op">)</span> asciiValue<span class="op">;</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"ASCII为68的字符为："</span> <span class="op">+</span> charFromAscii<span class="op">);</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 使用字符类型进行字符串处理</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">String</span> name <span class="op">=</span> <span class="st">"Alice"</span><span class="op">;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> firstLetter <span class="op">=</span> name<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"字符串的第一个符为: "</span> <span class="op">+</span> firstLetter<span class="op">);</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>这段代码展示了如何声明和初始化char变量，并进行简单的字符比较；同时演示了如何将Unicode码（这里是ASCII码）转换为字符类型，以及如何从字符串中提取首个字符。</p>
+<p>在计算机科学领域，正确理解和处理字符是一项充满挑战却又饶有趣味的事情，在编程发展史上经历了相当长的一段时间。为了让有兴趣的读者深入了解这段历史脉络，我特地撰写了关于计算机中字符处理发展的历史。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+计算机中字符处理的历史
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>在人类文明的长河中，信息传递与记录方式的发展始终伴随着科技进步的步伐。自古至今，从刻划在泥板上的楔形文字、镌刻在龟甲和兽骨上的甲骨文、书写在竹简上的汉字到印刷术的诞生，字符的记载形式不断演变。随着20世纪计算机技术的崛起，如何让冰冷的机器理解并处理人类语言中的字符，成为了一项至关重要的挑战。早期的计算机系统受限于硬件条件和编码体系的不统一，对字符的识别和处理存在着显著的局限性。</p>
+<p>随着时间的推移，从博多码到ASCII码，再到Unicode的提出，每一步都是人类智慧在解决字符编码问题上的一次飞跃。这些编码方案不仅反映了计算机科学的进步，也揭示了全球化时代下文化交融与交流的需求。这段历史见证了字符编码从单一语言向多元文化的包容性转变，同时也为现代计算机系统提供了坚实的语言基础支持。在这段旅程中，我们将会探讨一系列里程碑式的字符编码标准及其背后的故事，从而深入理解计算机是如何逐步“学会”理解和处理各种字符的。</p>
+<p><strong>博多码</strong></p>
+<p>在看电影时，我们有时会目睹演员用手电筒发出闪烁的灯光以传达SOS求救信号的情节，这种编码方式是源自于约1836年由塞缪尔·摩尔斯发明的摩尔斯码。作为一种历史悠久且曾占据主导地位的通信编码体系，摩尔斯码主要用于早期的电报传输，在二十世纪中叶之前扮演了至关重要的角色，直至随着技术进步和新型通信手段的涌现而逐渐淡出主流舞台。</p>
+<p>博多码是在摩尔斯码之后出现的，是在1870年由法国工程师爱米尔·博多（Emile Baudot）发明的一种二进制编码体系。该编码系统巧妙地运用了5位二进制数来表示单个字符，从而理论上能够表达出2的5次方即32种不同的组合。为了扩展字符集，博多码引入了两种工作状态：字母状态和数字状态，使得在有限的32种组合内能够表示更多的字符。在字母模式下，这套编码被用来表示字母及特定符号；而在数字模式时，则用于呈现数字和其他相关符号。</p>
+<p>博多码自发明后得到了广泛应用，尤其是在电报通信与早期电传打字机技术中发挥了重要作用。尽管随着时间的推移，它已被更先进的编码方式所取代，但博多码的一项关键设计遗产至今仍深深地影响着我们每一个人的日常生活——即键盘上用于切换字母与数字状态的Shift键。这一设计延续至今，已经成为了现代计算机输入设备不可或缺的一部分。</p>
+<p>历经以电传打字机为代表的电传通信网络二十年的发展与积淀，历史迈入了全新的计算机时代。1949年，具有里程碑意义的EDSAC计算机应运而生，这款计算机在字符编码上采用了名为EDSAC编码的方案。这一编码体系深受博多码的影响，同样采取5位二进制形式来表示一个字符，并沿用了博多码中用于切换字母与数字状态的关键设计——Shift键。</p>
+<p>EDSAC计算机诞生后的十年间，计算机技术蓬勃发展，各类新型计算机如雨后春笋般涌现，然而这些计算机在字符编码方面并未形成统一标准，每种型号的计算机均有各自独特的编码体系。这一现象导致了不同型号计算机之间数据交流的严重障碍，它们无法直接识别和处理彼此的数据信息，必须通过繁琐且容易出错的编码转换过程才能实现有效的数据交互，极大地限制了当时计算机系统的互操作性和数据共享效率。</p>
+<p><strong>ASCII码</strong></p>
+<p>鉴于当时计算机领域对于统一字符编码标准的迫切需求，IBM的一位名叫Bob Bemer的员工于1961年向美国国家标准学会（ANSI）提出了ASCII编码方案。ASCII全称为American Standard Code for Information Interchange，即信息交换的美国标准代码，这一名称清晰地表达了其旨在消除不同计算机系统间信息交流障碍的初衷。</p>
+<p>在提出后的两年内，ANSI采纳并发布了首个ASCII编码标准版本。随着技术发展和应用需求的变化，ASCII编码历经了多个版本的修订和完善。至1972年，ASCII编码已有了一个较为成熟的版本，它为后续的信息科技领域奠定了基础性的文本编码规范，并对全球范围内的计算机通信产生了深远的影响。下图是1972年的ASCII版本。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/c4-05.png" class="img-fluid figure-img"></p>
+<figcaption>1972年发布的ASCII编码表</figcaption>
+</figure>
+</div>
+<p>观察上图所示的ASCII编码表不难发现，其主要涵盖了英文字符集以及一系列控制字符。ASCII编码体系采用7位二进制数值对单个字符进行编码，基于这一特性，理论上最多能够表达128种不同的字符形态。这些字符囊括了从0到9的阿拉伯数字、全部26个英文字母（包括大写和小写）、各种标点符号以及其他一些具有特定功能的控制字符，共同构成了计算机处理文本信息的基础字符集合。</p>
+<p>在ASCII编码体系中，每个字符均对应着一个独一无二的数字标识，这些编码可被计算机系统有效地识别和处理。例如，大写字母”A”的ASCII编码为65（其二进制表示形式为01000001），小写字母”a”的编码则为97（对应的二进制码为01100001），数字”0”的编码数值为48（以二进制显示为00110000），而标点符号”!“的编码是33（其二进制表达为00100001）。尽管ASCII编码所能涵盖的字符集相对有限，但其作为计算机编码的基础原理，在文本处理、网络通信等众多领域中依然发挥着不可或缺的作用。</p>
+<p>随着计算机技术的发展以及全球范围内不同语言和符号需求的增长，单一的ASCII编码已无法满足全部需要。因此，人们扩展了ASCII编码体系，发展出了如ASCII扩展字符集1、2和3等多种扩充方案。同时，针对特定语言环境下的字符集，诸如简体中文采用了GB2312编码标准，繁体中文则依赖于Big5编码，俄语则采用KOI8编码机制等。此类编码方式各异，反映出各地区对字符处理的不同需求和复杂性。</p>
+<p><strong>Unicode码</strong></p>
+<p>为了应对全球字符编码的挑战与需求，Unicode方案应运而生，其别称包括统一码、万国码、国际码和单一码等，这些名称无一不揭示了Unicode所承载的伟大愿景——旨在创建一种能够涵盖全世界所有字符的统一编码体系。从这些多元化的翻译中，我们得以窥见Unicode背后宏大的理想与决心，即实现一个能全面囊括各地区语言文字及特殊符号的普适性编码标准。</p>
+<p>1987年，一个雄心勃勃的计划崭露头角，该计划由施乐公司（Xerox）的Joe Becker、苹果公司（Apple）的Lee Collins以及Mark Davis共同发起。他们的愿景是创建一个能够全面覆盖全球主流字符集的统一编码体系。历经精心筹备后，于1988年这一划时代的Unicode标准应运而生，后被人称为“Unicode 88”。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1988年的Unicode文档</strong></p>
+<p>1988年发布的Unicode文档的PDF文件我已经放在xueban.app社区中，但是细节实在是太复杂，我只读了一点。之所以叫Unicode，是因为想让这个编码Unique，Unified和Universal。</p>
+</div>
+</div>
+<p>在这部具有里程碑意义的1988年发布的文档中明确阐述了Unicode的核心目标：“旨在以一种切实可行且稳定可靠的方式满足全球范围内对于文本处理的需求。简而言之，Unicode可以被视为ASCII码的宽广扩展版，其字符容量已从最初的范围拓展至16位，从而有能力容纳更丰富多元的语言和符号。”</p>
+<p>让我们进行一个简单的计算，16位二进制所能表示的最大字符数量为216 = 65,536个，其编码范围从U+0000一直到 U+FFFF。在这65,536个字符空间中，涵盖了全球绝大多数主流语言的字符集，诸如拉丁字母、希腊字母、西里尔字母、阿拉伯字母、希伯来字母以及东方文字如汉字、日文平假名和片假名等。</p>
+<p>在Unicode编码规范中，每一个字符都对应着一个独一无二的标识，这个标识被称为码点（Code Point）。而在Java编程语言中，通常采用”前缀紧接着四位十六进制数的形式来表示Unicode码点，例如，“041”代表了拉丁字母”A”的码点，而“80B”则表示的是汉字“栋”的码点。接下来，看一下下面代码的例子：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> UnicodeExample1 <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出拉丁字母“A”的Unicode编码形式</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> latinLetter <span class="op">=</span> <span class="ch">'\u0041'</span><span class="op">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出：字母： A</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"字母： "</span> <span class="op">+</span> latinLetter<span class="op">);</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出汉字“栋”的Unicode编码形式</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">char</span> chineseCharacter <span class="op">=</span> <span class="ch">'\u680B'</span><span class="op">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 输出：汉字： 栋</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"汉字： "</span> <span class="op">+</span> chineseCharacter<span class="op">);</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>解释一下上面这段Java代码，这段代码主要用于演示如何在Java中使用Unicode编码表示和输出字符。</p>
+<p>首先，代码声明了一个字符变量latinLetter，并将其赋值为\u0041。在Java中，\u开头的序列是一个Unicode转义序列，用于表示一个Unicode字符。\u0041对应的正是Unicode编码中的拉丁字母”A”（对应ASCII编码中的A）。</p>
+<p>接下来，定义了另一个字符变量chineseCharacter，并将其赋值为\u680B，这是汉字“栋”的Unicode编码。</p>
+<p>总结来说，这段Java代码通过Unicode编码展示了如何在程序中表示和显示不同语言的字符，无论是拉丁字母还是汉字。通过Unicode编码，Java能够支持全球各种语言和符号的统一表示和处理。</p>
+</div>
+</div>
+</section>
+<section id="布尔类型" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="布尔类型"><span class="header-section-number">3.1.4</span> 布尔类型</h3>
+<p>在 Java 编程语言中，布尔类型被设计用于表示逻辑状态，它具备两种明确且互斥的取值：true 和 false。使用关键字 boolean 声明布尔类型的变量，使得开发者能够在程序中定义和操作代表真假条件的逻辑值。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> BooleanExample <span class="op">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 声明并初始化两个布尔变量，分别表示学生是否完成作业和是否通过考试</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">boolean</span> hasFinishedHomework <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">boolean</span> passedTheExam <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 使用布尔值进行逻辑判断，并根据结果输出相应信息</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>hasFinishedHomework <span class="op">&amp;&amp;</span> passedTheExam<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"完成了作业并通过了考试"</span><span class="op">);</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>hasFinishedHomework<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"完成了作业，但未通过考试"</span><span class="op">);</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span> <span class="op">(</span>passedTheExam<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"未完成作业，但已通过考试"</span><span class="op">);</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"既未完成作业也未通过考试"</span><span class="op">);</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在这个例子中，我们声明了两个布尔变量 hasFinishedHomework 和 passedTheExam，分别代表学生是否完成了作业以及是否通过了考试。然后，我们使用选择语句 (if-else) 对这两个布尔值进行组合和单独判断，从而决定学生的不同状态及相应的反馈信息。这个简单的示例展示了如何运用布尔值来进行逻辑运算和决策控制，从而解决实际问题。</p>
+<p>布尔类型作为一种相对简洁的基础数据类型，在计算机科学史上扮演着不可或缺的角色。为了让各位读者拓展阅读和深入了解这一重要概念的历史沿革，我将在下面讲一个布尔类型的插曲。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>布尔类型的由来</strong></p>
+<p>布尔数据类型的概念最早由 ALGOL 60 编程语言在 1960 年开创性地引入。自此以后，它成为了几乎所有后续设计的主流编程语言不可或缺的组成部分。</p>
+<p>值得一提的是，C 语言在其最初的标准化版本 C89（亦称为 ANSI C）中，并未直接提供布尔类型的支持，而是采用了一种约定俗成的方式，即非零整数值代表逻辑真 (true)，而值为 0 则表示逻辑假 (false)。</p>
+<p>直至 1999 年发布的 C 语言更新标准 C99 版本时，通过引入了头文件stdbool.h，正式将布尔类型纳入规范。此举旨在为程序员提供一种更为直观和规范的方式来处理布尔逻辑表达式及其结果。</p>
+<p>有很多语言借鉴了C语言的方法，比如Python、JavaScript。幸好，Java没有采用类似的方式。</p>
+</div>
+</div>
+</section>
+<section id="类型转换" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="类型转换"><span class="header-section-number">3.1.5</span> 类型转换</h3>
+<p>在Java编程中，数据类型转换是核心概念之一，它确保开发者能灵活处理八种基本数据类型的数值（如整数类型、浮点型、字符和布尔值），以适应复杂场景。不同类型间赋值时会发生转换：从较小到较大类型会自动进行（如int转long），而从较大到较小类型则需显式指定，并确保不引发精度丢失或溢出问题。</p>
+<p>掌握类型转换对编写高效且稳定的代码至关重要，可避免潜在错误并优化性能。类型转换可以分为两种情况：自动（隐式）转换和强制（显式）转换。接下来，我们将深入解析Java基本数据类型间的转换规则及应用示例。</p>
+<p><strong>自动（隐式）转换</strong></p>
+<p>在Java编程中，自动（隐式）类型转换是一种无需程序员显式指令即可完成的数据类型迁移过程。通常情况下，当两种数据类型之间存在层级关系时，即从数值范围较小的类型向数值范围较大的类型过渡，系统会自动执行此种转换。例如，可以将一个有效值域较窄的数据类型无缝转换为一个可容纳更大数值范围的数据类型，这种转换操作确保了数据精度得以完整保留。如下图所示，实线箭头所指示的方向代表着那些能够保持原始精度不损失的自动类型转换路径。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/c4-06.png" class="img-fluid figure-img"></p>
+<figcaption>Java基本数据类型之间的转换</figcaption>
+</figure>
+</div>
+<p>自动类型转换依次遵从如下的规则：</p>
+<p>规则1：如果有一个操作数为double类型，那么先要将另一个操作数转换为double类型</p>
+<p>规则2：如果有一个操作数为float类型，那么先要将另一个操作数转换为float类型</p>
+<p>规则3：如果有一个操作数为long类型，那么将另一个操作数转换为long类型</p>
+<p>规则4：如果以上都不满足，那两个操作数都转换为int类型</p>
+<p>了解了以上四条规则，我们通过几个示例来验证一下这些规则，代码如下所示。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TypeConversionExample <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 规则1：double类型的优先级最高</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">byte</span> b <span class="op">=</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> d <span class="op">=</span> <span class="fl">10.5</span><span class="op">;</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>b <span class="op">+</span> d<span class="op">);</span> <span class="co">// b 自动提升为 double 类型</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 规则2：若有float，其它转换为float</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> i <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> f <span class="op">=</span> <span class="fl">5.5f</span><span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>i <span class="op">+</span> f<span class="op">);</span> <span class="co">// i 自动转换为 float 类型</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 规则3：若有long，其它转换为long</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">short</span> s <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">long</span> l <span class="op">=</span> <span class="dv">20L</span><span class="op">;</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>s <span class="op">+</span> l<span class="op">);</span> <span class="co">// s 自动提升为 long 类型</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 规则4：如果都是整数类型（非上述情况），则提升至int</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>       <span class="dt">byte</span> b1 <span class="op">=</span><span class="dv">120</span><span class="op">;</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">byte</span> b2 <span class="op">=</span> <span class="dv">120</span><span class="op">;</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 字符类型在运算前会先被转换为int类型</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>b1 <span class="op">+</span> b2<span class="op">);</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在实际编程中，当进行涉及 char 和 byte、short、int 之间的算术运算时，Java 会自动将其提升至 int 类型，然后再执行运算。此外，在表达式中涉及浮点数时，整数类型会根据规则提升至对应的浮点数类型。例如，如果一个表达式包含 int 和 double 类型的操作数，那么 int 类型的操作数会先被提升为 double 类型，然后再进行计算。</p>
+<p><strong>强制（显式）转换</strong></p>
+<p>在 Java 编程语言中，强制（显式）类型转换是指程序员明确地将一种数据类型转换为另一种数据类型的过程。例如，当试图将一个 double 类型的变量赋值给一个 int 类型的变量时，或者需要将一个 Object 类型的引用转换为 String 类型的引用时，就需要进行强制类型转换。</p>
+<p>基本数据类型，例如整数类型（byte、short、int、long）、浮点数类型（float、double）或字符类型 （char）之间互相转换时，如果目标类型无法自动容纳源类型的值，则必须使用强制类型转换。强制类型转换可能会导致精度丢失或溢出，因此程序员需要谨慎使用，并确保转换后的值在预期范围内。</p>
+<p>为说明情况，我们通过如下代码来验证前面的说法。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> TypeCastingExample <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 示例1：long类型转int类型（可能丢失精度）</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 下面的largeValue值大于int的最大值</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">long</span> largeValue <span class="op">=</span> <span class="bu">Integer</span><span class="op">.</span><span class="fu">MAX_VALUE</span> <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> intValue<span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 强制类型转换，由于long类型的largeValue超过了int的最大值，</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 转换时会丢失精度，转换后的值不是largeValue的值</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        intValue <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> largeValue<span class="op">;</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"long to int: "</span> <span class="op">+</span> intValue<span class="op">);</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 示例2：float类型转int类型（同样可能丢失精度和尾数）</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> floatValue <span class="op">=</span> <span class="fl">123.456f</span><span class="op">;</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        intValue <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> floatValue<span class="op">;</span> <span class="co">// 强制转换为整数，会丢弃小数部分</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"float to int: "</span> <span class="op">+</span> intValue<span class="op">);</span> <span class="co">// 输出：123，小数部分被舍去</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 示例3：安全的类型转换（不丢失数据精度)</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">// byte的最大值是127</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">byte</span> smallByte <span class="op">=</span> <span class="dv">127</span><span class="op">;</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 这种转换是安全的，因为byte的所有值都在short的范围内</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">short</span> smallShort <span class="op">=</span> <span class="op">(</span><span class="dt">short</span><span class="op">)</span> smallByte<span class="op">;</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"byte to short: "</span> <span class="op">+</span> smallShort<span class="op">);</span> <span class="co">// 输出：127</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在上面这个例子中，展示了几个不同场景下的强制类型转换：</p>
+<ol type="1">
+<li>当尝试将一个超出目标类型表示范围的long值转换为int时，会发生精度丢失，因为int无法完整存储long的大数值。</li>
+<li>将float转换为int时，也会发生精度丢失，因为浮点数的小数部分会被截断，仅保留整数部分。</li>
+<li>在byte与short之间进行安全的转换，不会导致数据丢失，因为所有有效的byte值都能够在short类型中正确表示。</li>
+</ol>
+<p>在实际编程中，应该尽量避免可能导致数据丢失的强制类型转换。为了保证数据的完整性和程序的正确性，在进行强制类型转换之前，务必充分理解目标类型的大小和取值范围。</p>
+</section>
+</section>
+<section id="引用数据类型" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="引用数据类型"><span class="header-section-number">3.2</span> 引用数据类型</h2>
+<p>Java中的引用数据类型变量与基本数据类型有着显著的不同。基本数据类型变量直接包含数据，而引用数据类型变量实际上并不直接存储对象本身，而是存储对对象的一个引用，即指向对象所在的内存地址。常见的引用数据类型有类（Class）、接口（Interface）、数组（Array）等。<u>由于该类型的变量涉及内存管理和对象生命周期等更复杂的概念，为了确保讲解的连贯性和理解的深度，我决定将引用数据类型变量的详细讨论延后进行，待大家对类、接口等基础概念更为熟悉后再深入探究这一主题。</u></p>
+<p>目前，只涉及一些表面的知识，比如，在Java中有如下的两条语句，它们分别用于定义两种不同类型的变量实例：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> age1 <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">Integer</span> age2 <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>这两条声明语句揭示了Java中基本数据类型（如int）与引用数据类型（如Integer）之间的差异。</p>
+<p>首先，int是Java内建的基本整数类型，它直接存储数值，并在栈内存上分配空间，不涉及对象的概念。声明int age1 = 20时，变量age1将占用固定大小的空间来存储值20，且由于其为基本数据类型，无法被赋予null值。</p>
+<p>而Integer则是对基本数据类型int的封装类，属于引用数据类型。当声明Integer age2 = 20时，age2变量实际存储的是一个指向Integer对象的引用，该对象在堆内存中创建并存储数值20。由于Integer是一个对象，它可以具有额外的方法和属性，并且可以赋值为null，这为其提供了更丰富的功能和灵活性，比如自动装箱与拆箱机制、与集合框架的良好兼容性等。</p>
+<p>通过对比上述两条语句，我们可以初步理解Java类型系统中基本数据类型与引用数据类型的基本特征和使用场景，为进一步探究更深层次的编程技术打下坚实的基础。</p>
+</section>
+</section>
+<section id="变量的作用域" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 变量的作用域</h1>
+<section id="java变量的作用域" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="java变量的作用域"><span class="header-section-number">4.1</span> Java变量的作用域</h2>
+<p>在 Java 中，变量的作用域指的是变量在程序中可以被访问的范围，如果在一个作用域内定义了一个变量，它会覆盖外层作用域定义的同名变量，这种情况称为变量遮蔽。无论对人名还是变量来说，朗朗上口的名字比较稀缺，非常容易重名。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+重名问题普遍存在
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>《2019年全国姓名报告》报告显示，全国户籍人口中，使用频率最高姓名“张伟”有近30万人。但是这30万“张伟”并没有对我们造成过多困扰。对我们每个人来说，“张伟”是有作用域的。</p>
+<p>更普遍的例子，每个人都有“爸爸”，但是当喊“爸爸”的时候，并没有造成什么困扰，因为“爸爸”这个称呼在家庭这个作用域内是唯一的。当别人喊“爸爸”时，一定要注意作用域。</p>
+</div>
+</div>
+<p>在Java中，变量的作用域取决于它被声明的位置。以下是一个简单的示例代码片段，通过下面代码中的例子可以清晰地展示类成员变量、方法局部变量以及嵌套块级作用域内变量的不同作用域：</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode java code-with-copy"><code class="sourceCode java"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> ScopeExample <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 类作用域（类成员变量）：在整个类范围内有效</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> classVariable <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">methodScope</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 方法作用域（局部变量）：只在当前方法内部有效</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> methodVariable <span class="op">=</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Class variable: "</span> <span class="op">+</span> classVariable<span class="op">);</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Method variable: "</span> <span class="op">+</span> methodVariable<span class="op">);</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 块级作用域：只在当前大括号{}内有效</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">{</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> blockVariable <span class="op">=</span> <span class="dv">30</span><span class="op">;</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"Block variable: "</span> <span class="op">+</span> blockVariable<span class="op">);</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 尝试访问已超出作用域的blockVariable会编译错误</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        <span class="co">// System.out.println("从Bolck外部访问" + blockVariable);</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 创建一个ScopeExample对象实例</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>        ScopeExample example <span class="op">=</span> <span class="kw">new</span> <span class="fu">ScopeExample</span><span class="op">();</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 可以在main方法中直接访问类作用域的变量</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="st">"从main中访问类成员变量"</span> <span class="op">+</span> example<span class="op">.</span><span class="fu">classVariable</span><span class="op">);</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 调用methodScope方法</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>        example<span class="op">.</span><span class="fu">methodScope</span><span class="op">();</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 在main方法中尝试访问methodVariable或blockVariable会编译错误</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 因为它们的作用域仅限于各自的方法和块内部</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">// System.out.println("从main中访问" + methodVariable);</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">// System.out.println("从main中访问" + blockVariable);</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在上述示例代码中，简要涉及了几种不同类型的作用域概念：类作用域（Class Scope）、、方法作用域（Method Scope）以及代码块作用域（Block Scope）。虽然目前尚未对这些作用域名进行详细的阐述，但它们正是后续章节要深入探讨的核心内容。通过逐步解析这些知识的不同特征和适用场景，读者将能够充分理解Java变量在其生命周期内如何受到作用域规则的制约与影响，并学会在实际编程过程中有效地管理和控制变量的范围。</p>
+<p>在给出的代码示例中，我已通过详尽的注释对涉及不同作用域的变量进行了初步解读，并特意标识出那些超出作用域引用导致错误的部分，旨在直观展现变量的作用域这一核心概念。待你深入研读后续章节、系统性地学习之后，再次回顾此部分内容时，定会感到豁然开朗，原本看似复杂的知识点实则变得如此清晰易懂，恰似将厚重的知识体系“化繁为简”、“由厚读薄”的过程。</p>
+<p>若能进一步探究历史上其他编程语言在处理作用域问题上的不同策略与机制，将极大地丰富我们对Java作用域特性的理解，并有助于从更广阔的视角去把握和应用这一关键概念。通过比较不同语言间的作用域设计理念与实践差异，不仅可以加深对Java作用域规则的认识，还能促使我们更好地借鉴前人的智慧，在实际编程过程中更加得心应手地驾驭作用域这一核心要素。接下来，我讲一下作用域的历史。</p>
+</section>
+<section id="作用域的历史" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="作用域的历史"><span class="header-section-number">4.2</span> 作用域的历史</h2>
+<p>假如我们能回到编程语言发展的早期阶段，会发现彼时的语言在处理变量命名方面往往面临着严峻的挑战。由于早期编程中的变量几乎都是全局作用域，所有变量名在整个程序中均处于可见状态，这就如同在一个班级中，若存在多位同名的学生“张伟”，当教师在点名时，这些“张伟”无法确认老师喊的是谁。这种情况下，命名冲突的问题频频出现，严重影响了代码的可读性、可维护性和程序运行的稳定性。</p>
+<p>假设一个班级中出现了多名 “张伟”的情况，解决冲突的根本方式是要求其中一些学生改名。然而，将这种解决方案应用到编程领域，在面对庞大且复杂的代码体系时，单纯依靠避免变量名称重复的做法是不实际的（实际上，改名的方法在班级中也不现实）。因此，科学家提出了“作用域”这一概念，即为变量名定义特定的有效范围，确保在不同区域内的同名变量互不影响，从而彻底解决了程序中的命名冲突问题。</p>
+<p>目前业界普遍采纳了两种作用域策略：一种是动态作用域，另一种则是静态作用域。Java语言采用的是静态作用域机制，这意味着变量的作用域在编译阶段即可确定，并且其可见性和生命周期与程序的执行流程无关，仅依赖于其在源代码中的声明位置。通过这样的设计，Java能够有效管理变量的使用和生命周期，保证了代码的准确性。</p>
+<p>静态作用域在编程语言的编译阶段即被明确规定。它通过源代码中定义变量的位置，来界定变量的有效可见区域。在静态作用域机制下，一个函数或代码块内部声明的变量的作用域是由该函数或代码块本身的定义位置所决定的，并不受到调用位置的影响。当程序实际执行时，对变量的引用解析将严格遵循其在原始源代码中的声明顺序。</p>
+<p>相反，动态作用域则是随着程序运行过程实时确定的。它以执行流程为基准，动态地界定变量的可见范围。在采用动态作用域的语言中，变量的有效性取决于当前正在执行的代码的上下文，而非其在源代码文本中的声明点。这意味着，查找并确定一个变量值的过程，会根据调用栈的具体状态以及代码的实际执行路径来进行。</p>
+<p>当前，大多数编程语言普遍采纳的是静态作用域机制，这一做法在业界已深入人心，以至于习以为常。然而，作用域的概念及其发展历程远比当下所广泛采用的方案更为复杂多样。Perl语言就是一个极富代表性的例子，它展示了作用域演进过程中的诸多挑战与变化。作为曾经的Perl程序员，我对Perl语言的作用域特性有着深刻的理解，可以说，Perl语言几乎踩了变量作用域中所有的“坑”。通过了解Perl语言对作用域的处理方式，我们可以更全面地了解作用域概念的发展脉络。</p>
+<p>故事的灵感来源于Perl语言的实际创始人Larry Wall，一位毕业于加利福尼亚大学洛杉矶分校的杰出程序员。关于Perl语言，他公开过大量的书、博客与邮件。他曾任职于知名科技企业Unisys和希捷公司，身兼系统管理员和系统程序员双重角色，并在职业生涯的某个阶段服务于美国国家安全局（NSA），参与了高度机密的项目研发。</p>
+<p>Perl语言诞生之初，正是为了应对从海量文本数据中高效提取关键信息这一迫切需求。接下来，我将通过一个虚构的故事来揭示Perl语言发展历程中的一个重要抉择：使用动态作用域，还是用静态作用域。希望这个故事可以帮助读者直观理解这两种作用域机制之间的本质区别。我将以第一人称的叙述方式，扮演故事中的主角进行虚构演绎。（在这本专注于Java语言的书中写Perl语言，希望能够为编程爱好者带来别样的乐趣与启示。）</p>
+</section>
+<section id="虚构的故事动态作用域和静态作用域" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="虚构的故事动态作用域和静态作用域"><span class="header-section-number">4.3</span> 虚构的故事：动态作用域和静态作用域</h2>
+<p>我是个程序员，我是计算机先驱，站在1986年人文和科技的十字路口上。</p>
+<p>今天是1986年6月22日，在世界杯决赛的赛场上，马拉多纳带领阿根廷进了英格兰两个球。马拉多纳在球场上疯狂地挑衅，而英国人则绅士般站在球场，任由“潘帕斯草原上的雄鹰翱翔”。哦，忘记说一件事了，英国是个绅士国家，挑衅英国人只有一个结果，英国人会上诉到法院。</p>
+<p>我不是阿根廷球迷，甚至，我不是足球球迷，但是今天我看到英格兰惨败，心里太高兴了，因为我的上司是个英国绅士，我的合作伙伴是英国公司，我已经快被工作压垮了，而上司却威胁我如果不能按期完成工作，那就法院见。</p>
+<p>对了，我还没有说我的工作是什么呢。我的工作叫数据处理程序员，就是坐在计算机前面处理数据的那种人，现在是1986年，干我们这一行的还没多少人，以后也许会多吧，谁知道呢。我要给伦敦证券交易所的那帮混蛋处理数据，他们的数据太多，变化更多，不是每天都要数据，而是每秒都要数据，我真的快要被逼疯了。</p>
+<p>我有一台最先进的计算机，但是只有几个蹩脚的工具，有两个处理文本数据的软件叫<u>sed和awk</u>，还有一个不好用的编程语言叫C语言，还有个shell，没有其它的了，这些工具像石器时代过来的，面对伦敦证券交易所每天产生的巨量数据，这些工具早晚会顶不住。</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+当年Unix上流行的sed和AWK是什么?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>AWK是一种处理文本文件的语言，是一个强大的文本分析工具。特点是处理灵活，功能强大。可实现统计、制表以及其他功能。</p>
+<p>之所以叫AWK是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的Family Name的首字符。</p>
+<p>sed：Stream EDitor，流编辑器，它以行为单位处理字符流。</p>
+<p>目前几乎没人使用这两个工具了，在中文世界中，由于编码的问题，不能处理中文，因此用的更少。</p>
+</div>
+</div>
+<p>上帝保佑，如果我能有个更趁手的编程语言就好了，这个编程语言能够不像C语言一样每次使用前先编译，而是可以直接执行，这个语言还能和sed与awk完美结合。</p>
+<p>我知道现在没有，求人不如求已，只要有空闲，我自己做一个这样的编程语言吧。</p>
+<p>现在Apple公司很火，我也给我的编程语言起一个名字吧，就叫梨子语言，Pear语言吧。这个语言是我自己用的，所以设计得没那么精密，只要能完成工作就好。</p>
+<p>我有个优势，我有设计语言的条件，我妻子是个语言学家，她设计了一套语言，可以翻译多种版本的圣经，比我这个Pear语言可复杂多了。花了没多长时间，大概3个月吧，我这个语言就能运行了，至少再也不用写C语言了，伦敦证券交易所的那些数据每次都会有变动，再微小的修改，都要编译一次C语言，现在不用每次都编译了，我用得还是很开心的。</p>
+<p>我把我这个语言告诉了我的同事，他们提了一些意见，总归不用C语言了，还有一些同事提出要把sed和awk也整合进来，我觉得挺好的。</p>
+<p>又过了几个月，用我编程语言的人越来越多了，项目也快一年了，我打算把这个语言发到网上，如果有人喜欢，自己可以去编译一下，就发到unix的新闻组好了，就叫Pear kit 1.0吧。</p>
+<p>我获得了很多赞扬，但是也有人提出了一些bug，说这个语言不能很好地处理变量和作用域的问题。这个家伙发给我了一封邮件，我贴在这里，因为我的团队人不多，我还没遇到这个情况。</p>
+<p>亲爱的Pear创作人，你好：</p>
+<p>我非常喜欢你写的这个编程语言，每天都用得特别开心。我在工作中碰到了这样一个问题，因为我们是一个大型网站，有很多员工，Pear语言在设计的时候对变量使用的是对照表，我理解你这样设计的优点是很容易实现，对个人来说已经够快了，但是我的同事太多了，经常会给某个变量起相同的名字，所以，每次都要处理名字相同的问题。</p>
+<p>请问，有没有什么好办法或者好机制来处理名字相同的问题？</p>
+<p>邮件就是这样，我读了好几遍。没想到竟然有商业公司用Pear语言写程序，如果人一多，确实会出现他说的那个问题。我最初设计的时候确实没考虑这么多，为了说明这个情况，我来解释一下，以便大家知道这到底是个什么问题，看看下面这段代码：</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode perl code-with-copy"><code class="sourceCode perl"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">for</span>( i = <span class="dv">0</span>; i &lt; <span class="dv">10</span>; i++) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    process();</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span> i;</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>process() {</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    i = <span class="dv">0</span>;</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>由于我设计得不严谨，前面的循环里用到了一个变量i，在循环里还调用了一个方法process，结果这个process方法里也用到了变量i，这样就把i的值改变了，导致上面的循环成了死循环。</p>
+<p>我设计这个语言的时候，根本没有考虑这么多，我用了最简单的方法，用对照表，对照表的方法类似于身份证，出现一个变量就去一个列表中去查找，并且不能出现相同名字的变量，这个方法简单、粗暴、有效。</p>
+<p>我暂时没想到好的解决方法，只好建议他尽量不要取相同的名字，或者如果有很多开发者的话，可以考虑每个开发者加上自己名字的前缀，比如lyd_i这样。</p>
+<p>或者用下面这种方法，在方法入口处先保存原来的值，等到处理完以后，在方法出口的时候再把保存的值返回给变量。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode perl code-with-copy"><code class="sourceCode perl"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>process() {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  old_i = i;</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  i = <span class="dv">0</span>;</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  i = old_i;</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>这是个权益之计，我知道我要想办法解决这个问题了。这样写太麻烦了，人为增加了难度，也会增加出错的几率。可以把这种写法加上一个关键字local，有了这个关键字，可以让编程语言自己在程序入口处把值存起来，在方法出口处把值再复原回去。这样稍微减轻了一点工作量，上面这段代码可以这样写:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode perl code-with-copy"><code class="sourceCode perl"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>process() {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> i;</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  i = <span class="dv">0</span>;</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>直到又有一个人提出这个方法仍然有bug，这是我没想到的。我本以为是哪个人提出的无聊的问题，在我仔细看了邮件之后，才发现动态作用域的方法真的有严重的缺陷。</p>
+<p>看看下面的代码：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode perl code-with-copy"><code class="sourceCode perl"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x = <span class="ot">"</span><span class="st">global</span><span class="ot">"</span>; </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>print_x() {</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span> x; </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>set_local() {</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> x = <span class="ot">"</span><span class="st">local</span><span class="ot">"</span>;</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    print_x(); </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>在这段代码中，当set_local()函数调用print_x()时，尽管print_x()并未接收任何参数，其内部试图输出的变量x的值却受到了set_local()函数内局部变量的影响。这是不合常理的，当调用一个函数的时候，如果没有给这个函数传递参数，那么这个函数的行为是不能改变的。</p>
+<p>这个bug可以修吗？很难。如果要修，只能引入静态作用域，像C语言那样。但是，有这个必要吗？毕竟，我本来打算用动态作用域的……</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

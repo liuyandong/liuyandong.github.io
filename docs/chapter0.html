@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.555">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Java编程四部曲 - 导读</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Java编程四部曲</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Java编程</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter0.html">这本书适合谁？</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Java编程四部曲</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pay.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">付款方式与学伴社区</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">发布日期</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">四部曲之一: Java基础</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">点击查看完整目录</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">你为什么读不完一本书？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter0.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">这本书适合谁？</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./thanks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">推荐与感谢</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第1章 初始Java</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第2章 Hello World</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第3章 面向对象编程</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">第4章 变量</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+ <span class="menu-text">四部曲之二：Java Game</span>
+  </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./game-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">点击查看完整目录</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#这本书适合谁" id="toc-这本书适合谁" class="nav-link active" data-scroll-target="#这本书适合谁"><span class="header-section-number">1</span> 这本书适合谁</a></li>
+  <li><a href="#需要什么技术基础" id="toc-需要什么技术基础" class="nav-link" data-scroll-target="#需要什么技术基础"><span class="header-section-number">2</span> 需要什么技术基础</a></li>
+  <li><a href="#需要什么学习环境" id="toc-需要什么学习环境" class="nav-link" data-scroll-target="#需要什么学习环境"><span class="header-section-number">3</span> 需要什么学习环境</a></li>
+  <li><a href="#中英对照的问题" id="toc-中英对照的问题" class="nav-link" data-scroll-target="#中英对照的问题"><span class="header-section-number">4</span> 中英对照的问题</a></li>
+  <li><a href="#编程的未来" id="toc-编程的未来" class="nav-link" data-scroll-target="#编程的未来"><span class="header-section-number">5</span> 编程的未来</a></li>
+  <li><a href="#严正声明" id="toc-严正声明" class="nav-link" data-scroll-target="#严正声明"><span class="header-section-number">6</span> (<del>严正</del>)声明</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">导读</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="这本书适合谁" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 这本书适合谁</h1>
+<p>《Java》是一本介绍Java编程的书。对Java编程感兴趣，并想使用Java语言开发软件，无论是给安卓手机开发软件，还是想用Java开发网站，甚至中间件的人，都可以从本书中获得最重要的基础知识。</p>
+<p>本书的副标题是“有趣有料的Java编程”。如果你是一位对Java编程语言和计算机历史有强烈兴趣的爱好者，想必你一定也想了解编程语言和编程范式背后的故事，本书也能够充分的满足你的要求。副标题里的有趣和有料，对本书来说，意味着收集了很多有趣的编程故事，根据这些故事，再挖掘故事背后的历史真相。</p>
+<p>事实上，依我所见，最好的学习方法是通过追溯编程语言的发展历史，了解语言从何产生，因何变化，一边在历史中考证语言的进化，一边在实践中学习编程的技巧，边考据，边学习。只有这样，才能更深入的理解语言进化的脉络，更真切的领会语言设计者的意图。</p>
+<p>如果你认同以上的观点，那么这本书就适合你。</p>
+</section>
+<section id="需要什么技术基础" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 需要什么技术基础</h1>
+<p>从什么技术层面切入到Java编程领域？这是一个非常容易引起争论的话题。类似的问题还有学编程要求数学很好么？哪一门语言最适合初学者？要先学数据结构或者操作系统么？英语不好能学编程么？我认为学习编程和其它事情一样，比如学吉他、吹口琴、做蛋糕、追女孩……<u> 最大的障碍是：行动。</u></p>
+<p>我们初中学过一篇清代文学家彭端淑写的古文，名字叫《为学》。在这篇文章中，讲了两个四川的和尚要去南海，一贫一富，富者说他准备了好几年，要买一艘船顺着长江去南海。穷和尚说他只有一个盛水的瓶一个盛饭的碗。过了一年，穷和尚从南海归来，而富和尚还在准备。</p>
+<p>现在都已经是AI时代了，能搞明白个20%就开始动手吧。否则，光精神内耗，不停的纠结要不要做，纠结十个月，你喜欢的女生都给别人生孩子了。先上车再补票，实在不行，再下车呗，反正也没买票，还多了一段乘车的体验。</p>
+<p>善于下大棋，看二十步还没走一步的人，别说在AI时代了，就算在任何时代都活不过一集。比如，1807发生了第二次哥本哈根战役，丹麦的海军被英国摧毁，哥本哈根这个城市还被炮击。丹麦投降，但是痛定思痛，觉得这样不行，要建立一支舰队再跟英国人搞一次，一血前耻！他们就种植了大量的橡树，无奈橡木生长缓慢，200年后才长成。2007年，丹麦的林业局通知丹麦海军，橡木终于长成了，可以去造船跟英国佬死磕了！只是，大家都不懂，橡木如何加工成航母呢？</p>
+<p>对本书来说，如果你有编程的经验，相关的知识都储备的很好，那当然很好；如果没有编程的经验，也没有储备相关的知识，那也很好。千里之行，始于足下，本书对有无编程经验不做要求。人总要有第一次，理论重要，实战更重要，台上一分钟，台下十年功。</p>
+</section>
+<section id="需要什么学习环境" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 需要什么学习环境</h1>
+<p>小的学习环境是一台电脑，分硬件与软件两个环境。</p>
+<p>硬件环境：一台可以运行的电脑是必不可少的，对硬件的要求不高，只要日常能上网的电脑，都可以用来学习Java编程。简单来说，能打主流游戏的电脑，肯定能学编程，能编程的电脑，可不一定能打游戏。但是，家长/女朋友/老婆并不知道这回事，你可以以学习的名义，配一块4090显卡。</p>
+<p>软件环境：Java是跨平台的，所以对电脑运行的操作系统没有要求，无论Windows、Linux还是苹果的Mac OS都可以。目前Java的稳定版是21，也是本书使用的版本。</p>
+<p>不过呢，当要体验新特征的时候，确实需要更新的版本，到时候再说。Java现在进化很快——这也意味着曾经Java进化很慢——目前Java疯狂的从Kotlin，Swift等一众新生代语言中汲取力量，老黄瓜刷绿漆——装嫩。</p>
+<p>大的环境就是教育了。大家可以想这样一个问题，中国教育与中国足球哪个更有希望呢？</p>
+<p>我觉得，中国教育会更有希望，尤其是计算机专业。原因是，有大量的学生上大学后根本不上课，而是借助大学提供的巨大便利（主要是父母没法盯着了），通过网络自学，然后自谋职业。先用编程把自己的肚子填饱，如果还能学好英文，通过网络给外国的公司打工，如果干的好，就直接移民了，做世界公民不香么？</p>
+<p>不要辜负这个时代啊！</p>
+</section>
+<section id="中英对照的问题" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 中英对照的问题</h1>
+<p>计算机书有一个不能回避的问题是中英文对照，如何在中文和英文中保持平衡，对我来说是一大难题。在本书中，英文主要可以分为两大类，一类是涉及到的英文人名和英文公司名，别一类是涉及到的编程专业术语。</p>
+<p>对第一类来说，我决定统一保持英文名，像Java之父James Gosling，Sun公司。对第二类来说，就比较不容易权衡了，像Base Class是翻译为“父类”好呢，还是翻译为“基类”好呢？还有Derived Class是翻译为“子类”好呢，还是翻译为“派生类”好呢？这都没有统一的叫法。</p>
+<p>考虑到咱们国家的英语教育已经从小学开始了，能学编程的人，大部分都已经受过相当年限的英语教育，我决定在本书中，大部分类似面向对象，构造函数等不会产生歧义的用中文，少部分有歧义的，使用英语。像一些诸如SDK（Software Development Kit）这样的简写，如果翻译为中文“软件开发工具包”，感觉比SDK更拗口，这时候也使用英文。</p>
+<p>以讹传讹的大家心领神会就好，比如NBA有个球队叫费城76人队，其实人家跟76人没有任何关系，而是纪念1776年美国独立宣言。当然，这个说法也只是众多说法中的一个，但是我们的目的是知道怎么回事，而不是去死扣这些字眼。</p>
+</section>
+<section id="编程的未来" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 编程的未来</h1>
+<p>现在AI横行，编程的未来是属于自然语言编程的。最佳的状态是，你跟AI对话，或者插个脑机接口，AI就把你要做的事情做完了。根本不存在除AI之外的软件了，一切都是AI。但是那一天，鬼知道什么时候能到来。</p>
+<p>在AI完全搞定一切之前，编程语言与程序员尚有生存空间。即使在今天，AI对程序员的帮助依旧巨大。我觉得，哪门编程语言容易重构，就应该学习哪门编程语言。因为，在GitHub Copilot、OpenAI GPT……一众多模态大语言模型的帮助下，我们可以用“自然语言”来让AI帮我们“生成”代码，如果“生成的代码”不满意，就再让AI重新生成一次……</p>
+<p>先学点，容易阅读，容易重构的编程语言，然后等着被自然语言取代吧。</p>
+</section>
+<section id="严正声明" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> (<del>严正</del>)声明</h1>
+<p>当我看到很多的明星、达人、大V以及显贵用蓝底白字的声明或者严正声明的时候，又是喊律师，又是删帖，又是封号的时候，他们实际上是要开始说谎了。语气越是咄咄逼人，内心越是脆弱不堪。</p>
+<p>但是，没想到吧，我也要声明一下，用来甩锅。</p>
+<p>能力不同，展示的水平就不同。以世界杯为例，一样的球，一样的球场，一样的草坪，对中国队而言，磕磕绊绊的打入32强，已经是莫大的胜利，但对巴西队而言，漂漂亮亮的夺冠才是他们的目标。</p>
+<p>小时候，我有点喜欢足球，看的甲A。真正让我爱上足球的是1998年的法国世界杯，那届世界杯，我认识了罗纳尔多，他展现出来的华丽技术让我惊叹，从此让我沉迷足球，他是我足球的“初恋情人”。</p>
+<p>在这本书里，我要向读者展示我的Java技术，对此我深感畏惧，诚惶诚恐。我尽最大的努力展示我最好的技术给各位。希望这本书让您喜欢上编程，喜欢上Java。</p>
+<p>虽然我希望能展示出巴西队“华丽”的桑巴技术，但是我也深知水平所限，可能展示成了中国队的“磕磕绊绊”。如果看了这本书，您仍然不喜欢编程，那不是编程不好，也不是Java不好，是我展示得不好。</p>
+<p>足球是世界第一大运动，并不因为中国队踢的稀烂而不成为第一大运动。Java是房间里不可忽视的大象，并不因为有个叫栋哥的讲的稀烂而成为小众语言。</p>
+<p>无论如何，愿您早日碰到自己编程的“罗纳尔多”。</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
