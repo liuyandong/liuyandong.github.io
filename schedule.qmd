@@ -13,7 +13,7 @@ title: "发布日期与方式"
 | 《借助AI学习Java编程》      | 100%       | 2024.9.30前  | pdf        |
 | 《借助AI用Java制作2D游戏》  | 100%       | 2024.12.31前 | pdf        |
 | 《借助AI用Java制作GUI软件》 | 90%        | 2025.3.31前  | pdf        |
-| 《Java Spring》             | 50%        | 2025.9.31前  | pdf        |
+| 《Java Spring》             | 50%        | 2025.9.30前  | pdf        |
 
 ::: {.callout-tip icon="false"}
 我确实想提供epub的格式，但是……代码在epub里实在是太丑了，我是真的看不下去 :(
