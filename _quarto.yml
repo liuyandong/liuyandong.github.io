@@ -15,8 +15,55 @@ website:
   title: "Java编程四部曲"
   navbar:
     left:
-      - href: index.qmd
-        text: "Java编程"
+      - text: "购买与服务"
+        menu:
+          - text: "Java编程四部曲"
+            href: index.qmd
+          - text: "付款方式与学伴社区"
+            href: pay.qmd
+          - text: "发布日期与方式"
+            href: schedule.qmd
+      - text: "Java语言"
+        menu: 
+          - text: "查看完整目录"
+            href: content.qmd
+          - text: "---"
+          - text: "前言"
+            href: intro0.qmd
+          - text: "你为什么读不完一本书？"
+            href: intro1.qmd
+          - text: "这本书适合谁？"
+            href: chapter0.qmd
+          - text: "推荐与感谢"
+            href: thanks.qmd
+          - text: "---"
+          - text: "试读前4章"
+          - text: "---"
+          - text: "第1章 初始Java"
+            href: chapter1.qmd
+          - text: "第2章 Hello World"
+            href: chapter2.qmd
+          - text: "第3章 面向对象编程"
+            href: chapter3.qmd
+          - text: "第4章 变量"
+            href: chapter4.qmd
+      - text: "Java游戏"
+        menu:
+          - text: "查看完整目录"
+            href: game-content.qmd
+      - text: "Java应用"
+        menu:
+          - text: "还没开始整理"
+      - text: "Java Spring"
+        menu: 
+          - text: "还没开始整理"
+      - text: "运营日记"
+        href: log.qmd
+    right: 
+      - icon: twitter
+        href: https://x.com/xueban_app
+      - icon: telegram
+        
   sidebar:
     style: "floating"
     search: true
@@ -25,10 +72,10 @@ website:
         href: index.qmd
       - text: "付款方式与学伴社区"
         href: pay.qmd
-      - text: "发布日期"
+      - text: "发布日期与方式"
         href: schedule.qmd
       - text: "---"
-      - text: "四部曲之一: Java基础"
+      - text: "四部曲之一: Java语言"
       - text: "---"
       - text: "点击查看完整目录"
         href: content.qmd
@@ -41,6 +88,9 @@ website:
         href: chapter0.qmd
       - text: "推荐与感谢"
         href: thanks.qmd
+      - text: "---"
+      - text: "试读前4章"
+      - text: "---"
       - text: "第1章 初始Java"
         href: chapter1.qmd
       - text: "第2章 Hello World"
@@ -50,7 +100,7 @@ website:
       - text: "第4章 变量"
         href: chapter4.qmd
       - text: "---"
-      - text: "四部曲之二：Java Game"
+      - text: "四部曲之二：Java游戏"
       - text: "---"
       - text: "点击查看完整目录"
         href: game-content.qmd
