@@ -126,7 +126,7 @@ Java语言同样借鉴了Simula语言，在默认情况下是可以动态绑定�
 
 ### 小结
 
-如果用Peter Wegner在1987年对对面向对象下的定义：object-oriented = objects + classes + inheritance来衡量的话，至此，面向对象最重要的几个要素在Simula语言中都已经有了雏形。
+如果用Peter Wegner在1987年对面向对象下的定义：object-oriented = objects + classes + inheritance来衡量的话，至此，面向对象最重要的几个要素在Simula语言中都已经有了雏形。
 
 ::: callout-note
 ## Peter Wegner介绍
