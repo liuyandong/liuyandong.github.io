@@ -59,6 +59,8 @@ website:
           - text: "还没开始整理"
       - text: "运营日记"
         href: log.qmd
+      - text: "极简创业"
+        href: minimalist.qmd
     right: 
       - icon: twitter
         href: https://x.com/xueban_app

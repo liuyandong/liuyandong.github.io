@@ -15,3 +15,7 @@ u {
 .sidebar a[href=game-content.qmd] {
   color: red;
 }
+
+.right-align {
+  text-align: right;
+}
