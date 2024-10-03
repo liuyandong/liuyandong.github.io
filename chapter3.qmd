@@ -46,7 +46,7 @@ Kristen Nygaard和Ole-Johan Dahl两人对面向对象的贡献太多了。
 
 ## 面向对象发明人
 
-1952年，二战结束不久，挪威政府决定成立一个叫NCC（Norwegian Computing Center）的组织，把全国零散的计算机资源整合起来。说起来容易，做起来难，因为这些计算机资源都分散在全国各个部门，比如有的在NDRE（Norwegian Defense Research Establishment）这样的军方部门，有的在奥斯陆这样的大学，还有的在工业界。之前的挪威，还没有一个组织可以协调所有的部门，NCC为此而成立。
+1952年，二战结束不久，挪威政府决定成立一个叫NCC（Norwegian Computing Centre）的组织，把全国零散的计算机资源整合起来。说起来容易，做起来难，因为这些计算机资源都分散在全国各个部门，比如有的在NDRE（Norwegian Defense Research Establishment）这样的军方部门，有的在奥斯陆这样的大学，还有的在工业界。之前的挪威，还没有一个组织可以协调所有的部门，NCC为此而成立。
 
 在二战的时候，所有国家都知道了计算机的威力，挪威也不例外。毕竟挪威是在二战中与纳粹德国抗争时间坚持第二长的欧洲国家，仅次于俄国。战后，1954年，他们研发了第一台计算机，名字叫NUSSE（Numerical Universal Automatic Sequential Electronic Computer），这是一台真空管计算机。该真空管计算机制作完成以后，就被运到了上面所说的新成立的NCC里。
 
