@@ -227,7 +227,7 @@ BDFL的意思是终身仁慈独裁者BDFL（Benevolent Dictator For Life）是�
 ::: callout-tip
 ## 为什么要叫Java，是找算命先生算过么？
 
-Javaworld曾经写了一篇文章叫《So why did they decide to call it Java?》，网址：<https://www.javaworld.com/article/2077265/so-why-did-they-decide-to-call-it-java-.html>
+Javaworld曾经写了一篇文章叫《So why did they decide to call it Java?》，网址：<https://www.infoworld.com/article/2170044/so-why-did-they-decide-to-call-it-java-3.html>
 
 原来起名的时候有几个候选，分别是Silk、Lyric、Pepper、Java。当时的产品经理Kim Polese提出了这个名字。
 :::
